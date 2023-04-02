@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main>
       <div className=" mx-40 pt-10 flex justify-between ">
-        <section className="w-2/5">
+        <section className="w-2/5 min-w-fit">
           <div className="flex border bg-white shadow-lg shadow-white-500/50 rounded-full p-4">
             <div className="mr-10">
               <Link href="/" className="text-xl">
