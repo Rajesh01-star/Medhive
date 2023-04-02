@@ -1,54 +1,59 @@
+"use client";
 import Link from "next/link";
+import PageLink from "./PageLink";
+import Image from "next/image";
 import { BsInstagram, BsGithub } from "react-icons/bs";
+import { FiMapPin } from "react-icons/fi";
+import { BiStats } from "react-icons/bi";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+import { CgProfile } from "react-icons/cg";
+import { useState } from "react";
+
 export default function Navbar() {
+  const [navbar, setNavbar] = useState(false);
   return (
-    <nav className="mt-1 w-full bg-gray-500 text-white rounded-full border border-black">
-      <div className="flex justify-between items-center">
-        <div className="flex items-center">
-          <img className="h-14 w-15" src="./logo.png" alt="Logo" />
-          <span className="font-semibold text-xl tracking-tight ml-2 mr-6">
-            Medhive
-          </span>
-          <Link
-            href="Map"
-            className="text-gray-300 px-6 py-1 rounded-full border border-white hover:text-white hover:border-t-4 mr-4"
-          >
-            Map
+    <div>
+      {/* navbar */}
+      <nav className="bg-white w-24 fixed h-full rounded-r-[40px] p-4 flex flex-col justify-between shadow-lg shadow-white-500/50">
+        <section>
+          <Link href="/">
+            <Image src="/logo.png" width={500} height={500} alt="logo" />
           </Link>
-          <Link
-            href="Statistics"
-            className="text-gray-300 px-6 py-1 rounded-full border border-white hover:text-white hover:border-t-4 mr-4"
-          >
-            Statistics
-          </Link>
-          <Link
-            href="Profile"
-            className="text-gray-300 px-6 py-1 rounded-full border border-white hover:text-white hover:border-t-4"
-          >
-            Profile
-          </Link>
-        </div>
-        <div className="flex items-center mx-">
-          <Link
-            href="About"
-            className="text-gray-300 px-3 py-3 rounded-full border border-white hover:text-white hover:border-t-4 mr-1"
-          >
-            <BsInstagram />
-          </Link>
-          <Link
-            href="About"
-            className="text-gray-300 px-3 py-3 rounded-full border border-white hover:text-white hover:border-t-4 mr-4"
-          >
-            <BsGithub />
-          </Link>
-          <Link
-            href="About"
-            className="text-white bg-gray-600 px-10 py-2 rounded-full border border-white hover:text-white hover:border-t-4 mr-2"
-          >
-            About Us
-          </Link>
-        </div>
-      </div>
-    </nav>
+        </section>
+        <section>
+          <div>
+            <ul className="flex flex-col justify-between">
+              <li className="my-10 px-4 text-2xl transition-all hover:scale-150 duration-200">
+                <Link href="./Map">
+                  <FiMapPin />
+                </Link>
+              </li>
+              <li className="my-10 px-4 text-2xl transition-all hover:scale-150 duration-200">
+                <Link href="./Statistics">
+                  <BiStats />
+                </Link>
+              </li>
+              <li className="my-10 px-4 text-2xl transition-all hover:scale-150 duration-200">
+                <Link href="./About">
+                  <AiOutlineInfoCircle />
+                </Link>
+              </li>
+              <li className="my-10 px-4 text-2xl transition-all hover:scale-150 duration-200">
+                <Link href="https://github.com/Rajesh01-star/Medhive">
+                  <BsGithub />
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <div className="text-3xl p-4 transition-all hover:scale-150 duration-200">
+            <Link href="./Profile">
+              <CgProfile />
+            </Link>
+          </div>
+        </section>
+      </nav>
+    </div>
   );
 }
