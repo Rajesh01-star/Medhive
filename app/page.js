@@ -1,29 +1,29 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Inter } from "next/font/google";
-import styles from "./page.module.css";
+// components
+import Details from "./components/Details";
+// icons
 import { BsSearch } from "react-icons/bs";
+import { BsInstagram } from "react-icons/bs";
+import { IoMdNotificationsOutline } from "react-icons/io";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
     <main>
-      <div className=" mx-40 pt-10 flex justify-between ">
-        <section className="w-2/5 min-w-fit">
-          <div className="flex border bg-white shadow-lg shadow-white-500/50 rounded-full p-4">
-            <div className="mr-10">
-              <Link href="/" className="text-xl">
-                <BsSearch />
-              </Link>
-            </div>
-            <div className="text-gray-400/75">
-              Type keyword to find your search..
-            </div>
-          </div>
+      <section>
+      <div className="mx-40 pt-10 flex justify-between ">
+        <section className="w-full flex items-center">
+        <BsSearch className="absolute ml-4" />
+            <input type="text" placeholder="Type the keyword for your search.." className="P-8 flex border bg-white shadow-lg shadow-white-500/50 rounded-full p-4 transition-all ease-in-out focus:outline-none w-3/6 px-12 hover:shadow-xl" />
         </section>
-        <section>buttons</section>
+        <section className=" flex w-1/6 justify-around items-center">
+         <div className="bg-white border-2 shadow-md p-2 rounded-md cursor-pointer"><BsInstagram /></div>
+         <div className="bg-white border-2 shadow-md p-2 rounded-md cursor-pointer"><IoMdNotificationsOutline /></div>
+          </section>
       </div>
+      </section>
+      <section>
+        <Details />
+      </section>
     </main>
   );
 }

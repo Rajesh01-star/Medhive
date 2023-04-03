@@ -1,3 +1,4 @@
+import AboutDetails from "../components/AboutDetails";
 export default function About() {
-  return <div>About page.</div>;
+  return <div><AboutDetails /></div>;
 }

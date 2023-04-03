@@ -23,22 +23,22 @@ export default function Navbar() {
         <section>
           <div>
             <ul className="flex flex-col justify-between">
-              <li className="my-10 px-4 text-2xl transition-all hover:scale-150 duration-200">
+              <li className="my-5 px-4 text-2xl transition-all hover:scale-150 duration-200">
                 <Link href="./Map">
                   <FiMapPin />
                 </Link>
               </li>
-              <li className="my-10 px-4 text-2xl transition-all hover:scale-150 duration-200">
+              <li className="my-5 px-4 text-2xl transition-all hover:scale-150 duration-200">
                 <Link href="./Statistics">
                   <BiStats />
                 </Link>
               </li>
-              <li className="my-10 px-4 text-2xl transition-all hover:scale-150 duration-200">
+              <li className="my-5 px-4 text-2xl transition-all hover:scale-150 duration-200">
                 <Link href="./About">
                   <AiOutlineInfoCircle />
                 </Link>
               </li>
-              <li className="my-10 px-4 text-2xl transition-all hover:scale-150 duration-200">
+              <li className="my-5 px-4 text-2xl transition-all hover:scale-150 duration-200">
                 <Link href="https://github.com/Rajesh01-star/Medhive">
                   <BsGithub />
                 </Link>
