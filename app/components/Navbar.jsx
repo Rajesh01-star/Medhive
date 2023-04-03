@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
-import PageLink from "./PageLink";
 import Image from "next/image";
+import { motion } from "framer-motion";
+// icons
 import { BsInstagram, BsGithub } from "react-icons/bs";
 import { FiMapPin } from "react-icons/fi";
 import { BiStats } from "react-icons/bi";
@@ -14,7 +15,11 @@ export default function Navbar() {
   return (
     <div>
       {/* navbar */}
-      <nav className="bg-white w-24 fixed h-full rounded-r-[40px] p-4 flex flex-col justify-between shadow-lg shadow-white-500/50">
+      <motion.nav
+        initial={{ x: -80 }}
+        animate={{ x: 0 }}
+        className="bg-white w-24 fixed h-full rounded-r-[40px] p-4 flex flex-col justify-between shadow-lg shadow-white-500/50"
+      >
         <section>
           <Link href="/">
             <Image src="/logo.png" width={500} height={500} alt="logo" />
@@ -53,7 +58,7 @@ export default function Navbar() {
             </Link>
           </div>
         </section>
-      </nav>
+      </motion.nav>
     </div>
   );
 }
