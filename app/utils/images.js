@@ -6,33 +6,34 @@ import image5 from "../../public/images/image5.jpg";
 import image6 from "../../public/images/image6.jpg";
 import image7 from "../../public/images/image7.jpg";
 
+
 const images = [
   {
-    image: image1,
+    link: image1,
     name: "first",
   },
   {
-    image: image2,
+    link: image2,
     name: "second",
   },
   {
-    image: image3,
+    link: image3,
     name: "third",
   },
   {
-    image: image4,
+    link: image4,
     name: "fourth",
   },
   {
-    image: image5,
+    link: image5,
     name: "fifth",
   },
   {
-    image: image6,
+    link: image6,
     name: "sixth",
   },
   {
-    image: image7,
+    link: image7,
     name: "seventh",
   },
 ];

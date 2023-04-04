@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { BsSearch } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { IoMdNotificationsOutline } from "react-icons/io";
-import Card from "./components/Card";
+import Carousel from "./components/Carousel";
 
 export default function Home() {
   return (
@@ -37,7 +37,7 @@ export default function Home() {
           <Details />
         </div>
         <div className="mt-20 w-1/2">
-          <Card />
+          <Carousel />
         </div>
       </section>
     </main>
