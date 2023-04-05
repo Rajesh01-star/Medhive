@@ -7,6 +7,7 @@ import { BsSearch } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import Carousel from "./components/Carousel";
+import NewsCard from "./components/NewsCard";
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
             <input
               type="text"
               placeholder="Type the keyword for your search.."
-              className="flex border bg-white shadow-lg shadow-white-500/50 rounded-full p-4 transition-all ease-in-out focus:outline-none w-3/6 px-12 hover:shadow-xl"
+              className="flex border bg-white shadow-lg shadow-white-500/50 rounded-full p-4 transition-all ease-in-out focus:outline-none w-5/6 px-12 hover:shadow-xl"
             />
           </section>
           <section className=" flex w-1/6 justify-around items-center">
@@ -36,8 +37,9 @@ export default function Home() {
         <div className="w-1/2 flex mt-20 justify-center">
           <Details />
         </div>
-        <div className="mt-20 w-1/2">
+        <div className="mt-20 w-1/2 flex flex-col">
           <Carousel />
+          <NewsCard />
         </div>
       </section>
     </main>
