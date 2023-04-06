@@ -1,3 +1,4 @@
+// "use client"
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,15 +7,15 @@ export default function Card(props){
 
   // console.log(props);
   return(
-    <section className="ml-10 p-4">
-      <div className="img w-40 border-black border-8">
-      <Link href={`/pages/post/${props.imgName}`}>
-      <Image src={props.imgLink} alt="image" className="w-40 h-40 rounded-xl" />
+    <div className="card">
+      <div>
+      <Link href={`/pages/${props.imgName}`}>
+    <Image src={props.imgLink} alt="image" className="w-40 h-40 rounded-xl hover:scale-110 transition-all ease-in-out object-fit overflow-x-hidden"  />
     </Link>
-      </div>
-      <div className="flex justify-center">
-        {props.imgName}
-      </div>
-    </section>
+  <div className="flex justify-center text-base mt-4">
+    <p>{props.imgName}</p>
+  </div>
+  </div>
+</div>
   )
 }
