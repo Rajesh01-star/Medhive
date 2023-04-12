@@ -1,32 +1,14 @@
-import Image from "next/image"
-import images from "../utils/images"
-
-export default function NewsCard(){
+import Link from "next/link"
+export default function NewsCard(props){
     return(
-        <section className="border-black border-8 w-full h-40 mt-10 flex items-center justify-center bg-white rounded-lg">
-            <div className="carousel rounded-box">
-  <div className="carousel-item">
-    <Image src={images[0].link} width={0} height={100} alt="Burger" className="h-20 w-40" />
-  </div> 
-  <div className="carousel-item">
-  <Image src={images[0].link} width={400} height={100} alt="Burger" className="h-20 w-40" />
-  </div> 
-  <div className="carousel-item">
-  <Image src={images[1].link} width={400} height={100} alt="Burger" className="h-20 w-40" />
-  </div> 
-  <div className="carousel-item">
-  <Image src={images[2].link} width={400} height={100} alt="Burger" className="h-20 w-40" />
-  </div> 
-  <div className="carousel-item">
-  <Image src={images[3].link} width={400} height={100} alt="Burger" className="h-20 w-40" />
-  </div> 
-  <div className="carousel-item">
-  <Image src={images[4].link} width={400} height={100} alt="Burger" className="h-20 w-40" />
-  </div> 
-  <div className="carousel-item">
-  <Image src={images[5].link} width={400} height={100} alt="Burger" className="h-20 w-40" />
-  </div>
-</div>
-        </section>
+            <section className="w-full border-black border-8 h-full">
+            <Link href={props.url} className="w-full">
+                <img src={props.imgLink} className="w-full" />
+            </Link>
+            <div className="border-8 border-black w-full z-10 flex items-end">
+                writing asldkfjalsjdf aslkdjfa jsdfaslddfj 
+            </div>
+            </section> 
+
     )
 }

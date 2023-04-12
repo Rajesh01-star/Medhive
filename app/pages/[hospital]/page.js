@@ -3,9 +3,8 @@ import Link from "next/link";
 
 // export default async function hosPage({params}){
     export default function hosPage({params}){
-    // const res = await fetch('http://localhost:3001/hosp');
-    // const data = await res.json();
-    // console.log(data);
+
+    // custom data without fetching
     const data = {name:"Appolo",imgLink:"https://images.freeimages.com/images/previews/ac9/railway-hdr-1361893.jpg", bed:40, avgCost:4000,specialityChoosen:"cold" }
 
     return(

@@ -1,65 +1,96 @@
 "use client"
-
-import Link from "next/link"
-
-import TextField from "../components/TextField"
+import submitHandler from "../utils/postFetch";
 
 export default function Form(){
-    // let postData;
-    const submitHandler = (e)=>{
-        e.preventDefault();
-        const hospital = e.target.Hospital_name.value;
-        const speciality = e.target.Speciality_choosen.value;
-        const patient = e.target.Patient_name.value;
-        const date = e.target.Date.value;
 
-        fetch('http://localhost:3001/formPost',{method:'POST',headers:{'Content-Type': 'application/json'},body: JSON.stringify({hospital,speciality,patient,date})}).then(response =>console.log(response)).catch((e)=>console.log(e))
+  const handleFormSubmit = (event) => {
+    submitHandler(event);
+  }
 
-
-        // postData = {Hspital:hospital,Speciality:speciality,Patient:patient,Date:date}
-        // return postData;
-    }
-    // const requestOptions = {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(postData)
-    // };
-    // fetch('http://localhost:3001/formPost', requestOptions).then(response => response.json())
-
-    return(
-        // <section className="flex justify-center items-center w-screen h-screen" >
-        // <div className="card card-compact w-2/5 bg-base-100 shadow-xl border-black border-8 h-96">
-        //     <form action="#" method="post">
-        //     <div className="card-body">
-        // <h2 className="card-title">Hospital</h2>
-        //         <div className="flex flex-col justify-center">
-        //         <TextField label="Hospital name" type="text" />               
-        //         <TextField label="Speciality choosen" type="text" />
-        //         <TextField label="Name" type="text" />
-        //         <TextField label="Appt. Date" type="date" />
-        //         <TextField label="Mode of payment" type="radio" radio1="Cash" radio2="UPI" radio3="Card" />
-        //         <div className="card-actions justify-end">
-        //             <Link href={"/Form"} className="btn btn-primary">Book now</Link>
-        //         </div>
-        //         </div>
-        //         </div>
-        //     </form>
-        //     </div>
-        // </section>   
+    return(  
 <section className="flex justify-center items-center w-screen h-screen" >
-<form className="w-full max-w-sm" action="#" method="post" onSubmit={submitHandler}>
+<form className="w-full max-w-sm" onSubmit={handleFormSubmit}>
       <div className="flex flex-wrap -mx-3 mb-4">
+  {/* hospital name */}
         <div className="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-          <TextField type="text" label="Hospital_name" />
+          <label htmlFor="hosName" className="block text-gray-700 text-sm font-bold mb-2">
+              Hospital name : </label>
+          <input
+            type="text"
+            id="hosName"
+            name="hosName"
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
         </div>
-        <div className="w-full md:w-1/2 px-3">
-          <TextField type="text" label="Patient_name" />
+  {/* Patient Name */}
+       <div className="w-full md:w-1/2 px-3">
+          <label htmlFor="patName" className="block text-gray-700 text-sm font-bold mb-2">
+            Patient Name :
+          </label>
+          <input
+            type="text"
+            id="patName"
+            name="patName"
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Doe"
+          />
         </div>
+    {/* Speciality choosen */}
         <div className="w-full md:w-1/2 px-3">
-          <TextField type="text" label="Speciality_choosen" />
+          <label htmlFor="speChoosen" className="block text-gray-700 text-sm font-bold mb-2">
+            Speciality_choosen :
+          </label>
+          <input
+            type="text"
+            id="speChoosen"
+            name="speChoosen"
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Doe"
+          />
         </div>
+    {/* Date */}
         <div className="w-full md:w-1/2 px-3">
-          <TextField type="date" label="Date" />
+          <label htmlFor="date" className="block text-gray-700 text-sm font-bold mb-2">
+            Date :
+          </label>
+          <input
+            type="date"
+            id="date"
+            name="date"
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+    {/* Radio 1 Payement */}
+        <div className="w-full md:w-1/2 px-3">
+          <label className="block text-gray-700 text-sm font-bold mb-2">Mode of Payment</label>
+          <div className="flex items-center">
+          <input
+            type="radio"
+            id="Cash"
+            name="MOP"
+            className="form-radio h-4 w-4 text-blue-500 focus:outline-none focus:shadow-outline"
+          />
+          <label htmlFor="Cash" className="mx-2">
+            Cash
+          </label>
+          <input
+            type="radio"
+            id="Card"
+            name="MOP"
+            className="form-radio h-4 w-4 text-blue-500 focus:outline-none focus:shadow-outline"
+          />
+          <label htmlFor="Card" className="mx-2">
+            Card
+          </label>
+          <input
+            type="radio"
+            id="UPI"
+            name="MOP"
+            className="form-radio h-4 w-4 text-blue-500 focus:outline-none focus:shadow-outline"
+          />
+          <label htmlFor="male" className="mx-2">
+            UPI
+          </label>
+        </div>
         </div>
       </div>
       

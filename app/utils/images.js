@@ -39,3 +39,24 @@ const images = [
 ];
 
 export default images;
+// let data;
+
+// const fetchData = async () => {
+//   try {
+//     const response = await fetch('http://localhost:3001/hosp');
+//     if (!response.ok) {
+//       throw new Error('Network response was not ok');
+//     }
+//     data = await response.json();
+//     console.log('Data from localhost:3001/hosp:', data);
+//     return data;
+//   } catch (error) {
+//     console.error('Error fetching data:', error);
+//   }
+// };
+
+// export {fetchData}
+
+
+
+  
