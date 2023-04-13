@@ -1,3 +1,4 @@
+// the Details component
 export default function Details() {
   return (
     <div className="w-1/2 flex items-center justify-center">

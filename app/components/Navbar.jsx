@@ -1,6 +1,8 @@
+// needs 
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import React from "react";
 import { motion } from "framer-motion";
 // icons
 import { BsInstagram, BsGithub } from "react-icons/bs";
@@ -8,10 +10,10 @@ import { FiMapPin } from "react-icons/fi";
 import { BiStats } from "react-icons/bi";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
-import { useState } from "react";
 
 export default function Navbar() {
-  const [navbar, setNavbar] = useState(false);
+
+
   return (
     <div>
       {/* navbar */}
@@ -34,7 +36,7 @@ export default function Navbar() {
                 </Link>
               </li>
               <li className="my-5 px-4 text-2xl transition-all hover:scale-150 duration-200">
-                <Link href="./Statistics">
+                <Link href="#second-section">
                   <BiStats />
                 </Link>
               </li>

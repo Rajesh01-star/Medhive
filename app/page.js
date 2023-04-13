@@ -18,7 +18,7 @@ export default function Home() {
         </div>
       </section>
       {/* second section */}
-      <section className="flex justify-center w-full h-screen items-center ">
+      <section id="second-section" className="flex justify-center w-full h-screen items-center ">
           <NewsCarousel />
       </section>
     </main>
