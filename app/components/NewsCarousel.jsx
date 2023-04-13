@@ -42,8 +42,8 @@ export default function NewsCarousel(){
 
     return(
       <section className="carousel rounded-box w-3/4 h-3/4 overflow-y-hidden">
-      {fetchNews.map((news)=>{
-        return <section className="carousel-item w-full rounded-box ml-4" key={news.author}>
+      {fetchNews.map((news,index)=>{
+        return <section className="carousel-item w-full rounded-box ml-4" key={index}>
           <NewsCard author={news.author} title={news.title} content={news.content} url={news.url} imgLink={news.urlToImage} />
         </section>
       })}

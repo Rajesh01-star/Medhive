@@ -30,7 +30,7 @@ export default function Carousel(){
     return <div>Loading...</div>;
   }
 
-  const fetchedHospitals = Object.values(values)[0].data;
+  const fetchedHospitals = Object.values(values.data)
   // {1:{Hospital_Name:....}}
 
   return (
@@ -40,7 +40,7 @@ export default function Carousel(){
           Object.values(fetchedHospitals).map((value,index)=>{
             return (
               <section className="rounded-box ml-4" key={index}>
-                <Card Hospital_Name={value.Hospital_Name.substring(0, 10) + '...'} imgLink={value.imgLink} id={index} />
+                <Card Hospital_Name={value.Hospital_Name.substring(0, 10) + '...'} imgLink={value.Image} id={index} />
             </section>
             )
           })

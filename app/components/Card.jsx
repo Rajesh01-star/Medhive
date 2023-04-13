@@ -2,20 +2,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Modal } from "./modal";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 
 
 export default function Card(props){
 
   console.log(`props: ${props}`);
-  let router = useRouter();
+  // let router = useRouter();
   
   return(
     <div>
       
-    <Modal>
+    {/* <Modal>
       <Image src={props.imgLink} width={100} height={100} />
-      </Modal>
+      </Modal> */}
     <div className="card">
       <div>
       <Link href={`/pages/${props.imgName}`}>
