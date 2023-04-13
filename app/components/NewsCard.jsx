@@ -1,14 +1,18 @@
 import Link from "next/link"
 export default function NewsCard(props){
     return(
-            <section className="w-full border-black border-8 h-full">
-            <Link href={props.url} className="w-full">
-                <img src={props.imgLink} className="w-full" />
-            </Link>
-            <div className="border-8 border-black w-full z-10 flex items-end">
-                writing asldkfjalsjdf aslkdjfa jsdfaslddfj 
+            <div className="w-full h-ful p-4 bg-gradient-to-b from-white to-cyan-100 rounde-2xl">
+                <section className="h-5/6 overflow-hidden m-4 ">
+                    <Link href={props.url} className="w-full h-full flex justify-center " >
+                        <img src={props.imgLink} className="rounded-3xl" />
+                    </Link>
+                </section>
+                <section className="h-1/6 text-center backdrop-blur">
+                    <h2 className="text-lg">
+                        {props.title}
+                    </h2>
+                </section>
             </div>
-            </section> 
 
     )
 }

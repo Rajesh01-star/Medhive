@@ -1,13 +1,21 @@
 // "use client"
 import Image from "next/image";
 import Link from "next/link";
+import { Modal } from "./modal";
+import { useRouter } from "next/router";
 
 
 export default function Card(props){
 
   console.log(`props: ${props}`);
+  let router = useRouter();
   
   return(
+    <div>
+      
+    <Modal>
+      <Image src={props.imgLink} width={100} height={100} />
+      </Modal>
     <div className="card">
       <div>
       <Link href={`/pages/${props.imgName}`}>
@@ -18,6 +26,7 @@ export default function Card(props){
     <p>{props.Hospital_Name}</p>
   </div>
   </div>
+</div>
 </div>
   )
 }
