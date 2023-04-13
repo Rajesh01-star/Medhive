@@ -1,5 +1,6 @@
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 export const metadata = {
   title: "Create Next App",
@@ -12,6 +13,7 @@ export default function RootLayout({ children }) {
       <body className="bg-gradient-to-b from-cyan-100 to-white">
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
