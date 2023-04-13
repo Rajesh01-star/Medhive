@@ -4,63 +4,51 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
-// icons
-import { BsInstagram, BsGithub } from "react-icons/bs";
-import { FiMapPin } from "react-icons/fi";
-import { BiStats } from "react-icons/bi";
-import { AiOutlineInfoCircle } from "react-icons/ai";
-import { CgProfile } from "react-icons/cg";
+
+import SearchBar from "./SearchBar";
+import SvgComponent from "./SvgComponent";
+
+
 
 export default function Navbar() {
-
-
   return (
-    <div>
-      {/* navbar */}
-      <motion.nav
-        initial={{ x: -80 }}
-        animate={{ x: 0 }}
-        className="bg-white w-24 fixed h-full rounded-r-[40px] p-4 flex flex-col justify-between shadow-lg shadow-white-500/50"
-      >
-        <section>
-          <Link href="/">
-            <Image src="/logo.png" width={500} height={500} alt="logo" />
-          </Link>
-        </section>
-        <section>
-          <div>
-            <ul className="flex flex-col justify-between">
-              <li className="my-5 px-4 text-2xl transition-all hover:scale-150 duration-200">
-                <Link href="./Map">
-                  <FiMapPin />
-                </Link>
-              </li>
-              <li className="my-5 px-4 text-2xl transition-all hover:scale-150 duration-200">
-                <Link href="#second-section">
-                  <BiStats />
-                </Link>
-              </li>
-              <li className="my-5 px-4 text-2xl transition-all hover:scale-150 duration-200">
-                <Link href="./About">
-                  <AiOutlineInfoCircle />
-                </Link>
-              </li>
-              <li className="my-5 px-4 text-2xl transition-all hover:scale-150 duration-200">
-                <Link href="https://github.com/Rajesh01-star/Medhive">
-                  <BsGithub />
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </section>
-        <section>
-          <div className="text-3xl p-4 transition-all hover:scale-150 duration-200">
-            <Link href="./Profile">
-              <CgProfile />
+    <motion.nav initial={{y:-100}} animate={{y:0}} className="sticky top-0">
+    <section className="w-full h-24 backdrop-blur-md flex justify-between items-center p-4 px-10 text-xl">
+      <div className="flex w-1/2 items-center">
+      <Link href={"/"}>
+        <Image src="/logo.svg" width={100} height={100} alt="logo" />
+      </Link>
+      <SearchBar />
+      </div>
+      <div className="w-[30rem]">
+        <ul className="flex justify-around">
+          <li>
+            <Link href={"/About"} className="flex items-center hover:scale-110 transition-all ease-in-out">
+              about
+              <SvgComponent />
             </Link>
-          </div>
-        </section>
-      </motion.nav>
-    </div>
+          </li>
+          <li>
+            <Link href={"/News"} className="flex items-center hover:scale-110 transition-all ease-in-out">
+              news
+              <SvgComponent />
+              </Link>
+          </li>
+          <li>
+            <Link href={"/blog"} className="flex items-center hover:scale-110 transition-all ease-in-out">
+              blog
+              <SvgComponent />
+              </Link>
+          </li>
+          <li>
+            <Link href={"#"} className="flex items-center hover:scale-110 transition-all ease-in-out">
+              say hello
+              <SvgComponent />
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </section>
+    </motion.nav>
   );
 }
