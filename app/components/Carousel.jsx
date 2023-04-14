@@ -1,7 +1,11 @@
+"use clinet";
+// React-Next modules import
 import { use, useEffect, useState } from "react";
 import Card from "./Card";
+//the custom modules import 
 import { carouselFetchUrl } from "../utils/url";
 
+// async function to call the top-hospitals api
 async function getData(){
   return await (await fetch(carouselFetchUrl)).json();
 }
@@ -30,6 +34,7 @@ export default function Carousel(){
     return <div>Loading...</div>;
   }
 
+  // to get the desired values destructuring
   const fetchedHospitals = Object.values(values.data)
   // {1:{Hospital_Name:....}}
 
@@ -37,10 +42,12 @@ export default function Carousel(){
     <div className="carousel overflow-x-auto shadow-inner shadow-white rounded-3xl">
       <div className="flex gap-x-0 carousel-item">
         {
+          // mapping the Object by converting into an array of objects
           Object.values(fetchedHospitals).map((value,index)=>{
             return (
               <section className="rounded-box ml-4" key={index}>
-                <Card Hospital_Name={value.Hospital_Name.substring(0, 10) + '...'} imgLink={value.Image} id={index} index={index} />
+                {/* calling the Card object with props */}
+                <Card Hospital_Name={value.Hospital_Name.substring(0, 10) + '...'} imgLink={value.Image} id={index} />
             </section>
             )
           })

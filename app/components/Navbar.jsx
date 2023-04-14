@@ -1,64 +1,92 @@
+// needs to be on the client side to use
 "use client";
+// React-Next modules import
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
-// icons
-import { BsInstagram, BsGithub } from "react-icons/bs";
-import { FiMapPin } from "react-icons/fi";
-import { BiStats } from "react-icons/bi";
-import { AiOutlineInfoCircle } from "react-icons/ai";
-import { CgProfile } from "react-icons/cg";
+import React from "react";
 import { useState } from "react";
+import { motion } from "framer-motion";
+
+//the custom modules import
+import SearchBar from "./SearchBar";
 
 export default function Navbar() {
-  const [navbar, setNavbar] = useState(false);
+// let valueA = 0,valueB = 0,valueC = 0,valueD = 0;
+const [valueA,setValueA] = useState(0)
+const [valueB,setValueB] = useState(0)
+const [valueC,setValueC] = useState(0)
+const [valueD,setValueD] = useState(0)
+
   return (
-    <div>
-      {/* navbar */}
-      <motion.nav
-        initial={{ x: -80 }}
-        animate={{ x: 0 }}
-        className="bg-white w-24 fixed h-full rounded-r-[40px] p-4 flex flex-col justify-between shadow-lg shadow-white-500/50"
-      >
-        <section>
-          <Link href="/">
-            <Image src="/logo.png" width={500} height={500} alt="logo" />
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className="sticky top-0 z-10"
+    >
+      <section className="w-full h-24 backdrop-blur-md flex justify-between items-center p-4 px-10 text-xl">
+        <div className="flex w-1/2 items-center">
+          <Link href={"/"}>
+            <Image src="/logo.svg" width={100} height={100} alt="logo" />
           </Link>
-        </section>
-        <section>
-          <div>
-            <ul className="flex flex-col justify-between">
-              <li className="my-5 px-4 text-2xl transition-all hover:scale-150 duration-200">
-                <Link href="./Map">
-                  <FiMapPin />
-                </Link>
-              </li>
-              <li className="my-5 px-4 text-2xl transition-all hover:scale-150 duration-200">
-                <Link href="./Statistics">
-                  <BiStats />
-                </Link>
-              </li>
-              <li className="my-5 px-4 text-2xl transition-all hover:scale-150 duration-200">
-                <Link href="./About">
-                  <AiOutlineInfoCircle />
-                </Link>
-              </li>
-              <li className="my-5 px-4 text-2xl transition-all hover:scale-150 duration-200">
-                <Link href="https://github.com/Rajesh01-star/Medhive">
-                  <BsGithub />
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </section>
-        <section>
-          <div className="text-3xl p-4 transition-all hover:scale-150 duration-200">
-            <Link href="./Profile">
-              <CgProfile />
-            </Link>
-          </div>
-        </section>
-      </motion.nav>
-    </div>
+          <SearchBar />
+        </div>
+        <div className="w-[30rem]">
+          <ul className="flex justify-around">
+            <li>
+              <Link
+                onMouseEnter={()=>setValueA(45)}
+                onMouseLeave={()=>setValueA(0)}
+                href={"/About"}
+                className="flex items-center hover:scale-105 transition-all ease-in-out"
+              >
+                about
+                  <motion.svg animate={{rotateZ:valueA,transition:{duration:0.2}}}  xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                  <path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z" />
+                  </motion.svg>
+              </Link>
+            </li>
+            <li>
+              <Link
+                onMouseEnter={()=>setValueB(45)}
+                onMouseLeave={()=>setValueB(0)}
+                href={"/News"}
+                className="flex items-center hover:scale-105 transition-all ease-in-out"
+              >
+                news
+                <motion.svg animate={{rotateZ:valueB,transition:{duration:0.2}}}  xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                  <path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z" />
+                  </motion.svg>
+              </Link>
+            </li>
+            <li>
+              <Link
+                onMouseEnter={()=>setValueC(45)}
+                onMouseLeave={()=>setValueC(0)}
+                href={"/blog"}
+                className="flex items-center hover:scale-105 transition-all ease-in-out"
+              >
+                blog
+                <motion.svg animate={{rotateZ:valueC,transition:{duration:0.2}}}  xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                  <path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z" />
+                  </motion.svg>
+              </Link>
+            </li>
+            <li>
+              <Link
+                onMouseEnter={()=>setValueD(45)}
+                onMouseLeave={()=>setValueD(0)}
+                href={"#"}
+                className="flex items-center hover:scale-105 rounded-xl transition-all ease-in-out"
+              >
+                say hello
+                <motion.svg animate={{rotateZ:valueD,transition:{duration:0.2}}}  xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                  <path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z" />
+                  </motion.svg>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </motion.nav>
   );
 }

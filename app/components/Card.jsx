@@ -1,24 +1,16 @@
-// "use client"
+// React-Next modules import
 import Image from "next/image";
 import Link from "next/link";
-import { Modal } from "./modal";
-// import { useRouter } from "next/router";
 
-
+// this card component will be called by the carousel component each time for the top hospitals
 export default function Card(props){
-
-  console.log(`props: ${props}`);
-  // let router = useRouter();
-  
-  return(
+// props.HospitalName,props.imgLink,props.id
+  // console.log(`props: ${props}`);
+   return(
     <div>
-      
-    {/* <Modal>
-      <Image src={props.imgLink} width={100} height={100} />
-      </Modal> */}
     <div className="card">
       <div>
-      <Link href={`/pages/${props.index}`}>
+      <Link href={`/pages/${props.id}`}>
       {/* <Image src={props.imgLink} alt="image" className="w-40 h-40 rounded-xl hover:scale-110 transition-all ease-in-out object-fit overflow-x-hidden"  /> */}
       <Image src={props.imgLink} alt="image" className="w-40 h-40 rounded-xl hover:scale-110 transition-all ease-in-out object-fill overflow-x-hidden" width={0} height={0}  />
     </Link>
