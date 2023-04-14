@@ -1,11 +1,23 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from 'next/navigation';
+
+import { searchHospitalUrl } from "@/app/utils/url";
 
 // export default async function hosPage({params}){
-    export default function hosPage({params}){
+    export default function hosPage(){
+        const Id = usePathname()
+        // /pages/Id so slice 7 will eliminate the non-required elements
+        console.log(Id.slice(7));
 
+        // async function newsFetch() {
+        //     return await (await fetch(`searchHospitalUrl${Id}`)).json();
+        //   }
     // custom data without fetching
     const data = {name:"Appolo",imgLink:"https://images.freeimages.com/images/previews/ac9/railway-hdr-1361893.jpg", bed:40, avgCost:4000,specialityChoosen:"cold" }
+
+
 
     return(
         <section className="flex justify-center items-center w-screen h-screen" >

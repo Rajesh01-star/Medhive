@@ -3,6 +3,7 @@ import { useState } from "react";
 
 //the custom modules import
 import { SearchSvgComponent } from "./SvgComponent";
+import { motion } from "framer-motion";
 
 export default function SearchBar() {
   return (
@@ -18,7 +19,7 @@ export default function SearchBar() {
           <input
             type="text"
             id="simple-search"
-            class="bg-white text-gray-900 text-sm rounded-lg  block w-3/4 pl-10 p-2.5 hover:bg-white hover:w-full transition-all ease-linear active:border-none"
+            class="bg-white text-gray-900 text-sm rounded-lg  block w-3/4 pl-10 p-2.5 hover:w-full transition-all ease-linear active:border-none"
             placeholder="Search"
             required
           />

@@ -1,7 +1,6 @@
 "use client";
 // components
 import Details from "./components/Details";
-import SearchBar from "./components/SearchBar";
 // icons
 import Carousel from "./components/Carousel";
 import NewsCarousel from "./components/NewsCarousel";
