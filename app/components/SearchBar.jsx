@@ -1,18 +1,43 @@
 // React-Next modules import
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import styles from "../styles/SearchBar.module.css"
 
 //the custom modules import
 import { SearchSvgComponent } from "./SvgComponent";
 import { motion } from "framer-motion";
 
 export default function SearchBar() {
+  const [values, setValues] = useState(null);
+  const [search, setSearch] = useState([]);
+
+  const handleChange = async (event) => {
+    const { value } = event.target;
+    if (value.length >= 3) { // Only fetch if search query has 3 or more characters
+      try {
+        const data = await suggestionFetch(value);
+        setSearch(data);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      setSearch([]); // Reset search results if search query has less than 3 characters
+    }
+  }
+
+  const suggestionFetch = async (value) => {
+    return await (await fetch(`http://localhost:8000/suggestions?keyword=${value}`)).json();
+  }
+
+
+
   return (
     <div className="ml-20 w-full">
-      <form class="flex items-center">
+      <div class="flex items-center">
         <label for="simple-search" class="sr-only">
-          Search
+          Searched
         </label>
-        <div class="relative w-full">
+        < div class="relative w-full">
           <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <SearchSvgComponent />
           </div>
@@ -22,9 +47,19 @@ export default function SearchBar() {
             class="bg-white text-gray-900 text-sm rounded-lg  block w-3/4 pl-10 p-2.5 hover:w-full transition-all ease-linear active:border-none"
             placeholder="Search"
             required
+            onChange={handleChange}
           />
+         {search?.length > 0 &&
+          <div className={styles.autocomplete}>
+            {search?.map((ele, i) =>
+              <div key={i} className={styles.autocompleteItems}>
+                <span>{ele.name}</span>
+              </div>
+            )}
+          </div>
+        }
         </div>
-      </form>
+      </div>
     </div>
   );
 }
