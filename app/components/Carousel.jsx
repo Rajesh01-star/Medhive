@@ -40,7 +40,7 @@ export default function Carousel(){
           Object.values(fetchedHospitals).map((value,index)=>{
             return (
               <section className="rounded-box ml-4" key={index}>
-                <Card Hospital_Name={value.Hospital_Name.substring(0, 10) + '...'} imgLink={value.Image} id={index} />
+                <Card Hospital_Name={value.Hospital_Name.substring(0, 10) + '...'} imgLink={value.Image} id={index} index={index} />
             </section>
             )
           })

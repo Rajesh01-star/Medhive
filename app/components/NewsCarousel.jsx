@@ -36,7 +36,7 @@ export default function NewsCarousel(){
   }
 
   const fetchNews = values.articles;
-  fetchNews.map((news)=>console.log(news))
+  // fetchNews.map((news)=>console.log(news))
 
 
 
