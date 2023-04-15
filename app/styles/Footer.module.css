@@ -5,6 +5,7 @@
 }
 
 .content {
+  background-color: rgb(26, 27, 38) ;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -25,4 +26,13 @@
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(5px);
   /* background-color: #000000cc; */
+}
+.extra{
+  /* width: 1300px; */
+  background-color: #11ffee00;
+  
+}
+.space{
+  padding: auto;
+
 }

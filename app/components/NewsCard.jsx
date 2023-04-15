@@ -24,11 +24,11 @@ export default function NewsCard(props) {
             src={imgSrc}
             className="rounded-3xl"
             // if any image fails to load this default image will be shown
-            onLoadingComplete={(result) => {
-              if (result.naturalWidth === 0) {
-                set_imgSrc(fallBackImageUrl);
-              }
-            }}
+            // onLoadingComplete={(result) => {
+            //   if (result.naturalWidth === 0) {
+            //     set_imgSrc(fallBackImageUrl);
+            //   }
+            // }}
             onError={() => {
               set_imgSrc(fallBackImageUrl);
             }}
