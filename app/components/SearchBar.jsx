@@ -44,7 +44,7 @@ export default function SearchBar() {
           <input
             type="text"
             id="simple-search"
-            class="bg-white text-gray-900 text-sm rounded-lg  block w-3/4 pl-10 p-2.5 hover:w-full transition-all ease-linear active:border-none"
+            class="bg-cyan-200 text-white text-sm rounded-lg  block w-3/4 pl-10 p-2.5 hover:w-full transition-all ease-linear active:border-none"
             placeholder="Search"
             required
             onChange={handleChange}

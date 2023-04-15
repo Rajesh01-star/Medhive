@@ -29,23 +29,29 @@ export default function hosPage() {
     }, []);
 
     if (error) {
-        return <div>Error: {error.message}</div>;
+        return <div className="card h-[20rem]">
+            <iframe src="https://embed.lottiefiles.com/animation/98642" className="pointer-events-none"></iframe>
+            <span className="text-center">Error: {error.message}</span>
+            </div>;
     }
 
     if (!values) {
-        return <div>Loading...</div>;
+        return <div className="card h-[20rem]">
+            <iframe src="https://embed.lottiefiles.com/animation/9844" className="pointer-events-none"></iframe>
+            <span className="text-center">Loading...</span>
+        </div>;
     }
 
     // console.log(values[0].H_No);
 
     // custom data without fetching
-    const data = {name:"Appolo",imgLink:"https://images.freeimages.com/images/previews/ac9/railway-hdr-1361893.jpg", bed:40, avgCost:4000,specialityChoosen:"cold" }
-
+    // const customValue = [{Hospital_Name:"Apollo",Place:"Bhubaneswar",Total_Beds:14,Total_Doctors:40,Total_Specialties:10,Stars:3}]
+    // customValue will be values when api is fetching
     return (
-        <section className="flex justify-center items-center w-screen h-screen">
-            <div className="card card-compact w-2/5 bg-base-100 shadow-xl">
-                <figure>
-                    <Image src={data.imgLink} alt="image" width={400} height={400} className="w-full" />
+        <section className="flex justify-center items-center w-full h-screen">
+            <div className="card cardd-compact bg-white/40 w-1/3 border-8 border-yellow-200 shadow-xl backdrop-blur-xl">
+                <figure >
+                    <Image src={"https://picsum.photos/200"} alt="image" width={100} height={100} className="w-[10rem] border-black border-8" />
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title">Hospital</h2>
@@ -56,8 +62,6 @@ export default function hosPage() {
                         <p>Total doctors: {values[0].Total_Doctors}</p>
                         <p>Speciality: {values[0].Total_Specialties}</p>
                         <p>Stars: {values[0].Stars}</p>
-
-
                     </div>
                     <div className="card-actions justify-end">
                         <Link href={"/Form"} className="btn btn-primary">Book now</Link>

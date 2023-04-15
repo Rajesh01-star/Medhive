@@ -17,13 +17,20 @@ const [valueB,setValueB] = useState(0)
 const [valueC,setValueC] = useState(0)
 const [valueD,setValueD] = useState(0)
 
+const handleScroll = () => {
+  const newsCarousel = document.getElementById('second-section');
+  if (newsCarousel) {
+    newsCarousel.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className="sticky top-0 z-10"
     >
-      <section className="w-full h-24 backdrop-blur-md flex justify-between items-center p-4 px-10 text-xl">
+      <section className="w-full h-24 backdrop-blur-sm bg-white/50 flex justify-between items-center p-4 px-10 text-xl">
         <div className="flex w-1/2 items-center">
           <Link href={"/"}>
             <Image src="/logo.svg" width={100} height={100} alt="logo" />
@@ -49,7 +56,9 @@ const [valueD,setValueD] = useState(0)
               <Link
                 onMouseEnter={()=>setValueB(45)}
                 onMouseLeave={()=>setValueB(0)}
-                href={"/News"}
+                href="/#second-section"
+                as="/#news-section"
+                onClick={handleScroll}
                 className="flex items-center hover:scale-105 transition-all ease-in-out"
               >
                 news

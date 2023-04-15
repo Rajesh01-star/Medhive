@@ -34,7 +34,7 @@ export default function Home() {
     <main>
       <Section>
       {/* first section */}
-        <div className="w-full flex justify-center px-20 h-screen">
+        <div id="first-section" className="w-full flex justify-center px-20 h-screen">
           <Details />
         <div className=" w-1/2 flex items-center">
           <Carousel />
