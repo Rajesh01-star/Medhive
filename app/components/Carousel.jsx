@@ -5,6 +5,7 @@ import { use, useEffect, useState } from "react";
 import { carouselFetchUrl } from "../utils/url";
 import Card from "./Card";
 import styles from "../styles/Carousel.module.css"
+import { ErrorAnimation,LoadingAnimation } from "./LoadingAnimations";
 
 // async function to call the top-hospitals api
 async function getData(){
@@ -28,11 +29,11 @@ export default function Carousel(){
   }, []);
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <ErrorAnimation errorMessage={error.message} />;
   }
 
   if (!values) {
-    return <div>Loading...</div>;
+    return <LoadingAnimation />;
   }
 
   // to get the desired values destructuring
