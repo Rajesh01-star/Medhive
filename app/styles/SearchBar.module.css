@@ -6,7 +6,7 @@
   }
   
   .autocompleteItems {
-    border-bottom: 1px solid #e6e666;
+    border-bottom: 1px solid black;
     padding: 10px 5px;
     cursor: pointer;
     color: dodgerblue;
