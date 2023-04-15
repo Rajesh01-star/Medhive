@@ -1,9 +1,10 @@
 "use clinet";
 // React-Next modules import
 import { use, useEffect, useState } from "react";
-import Card from "./Card";
 //the custom modules import 
 import { carouselFetchUrl } from "../utils/url";
+import Card from "./Card";
+import styles from "../styles/Carousel.module.css"
 
 // async function to call the top-hospitals api
 async function getData(){
@@ -39,21 +40,29 @@ export default function Carousel(){
   // {1:{Hospital_Name:....}}
   // console.log(fetchedHospitals);
 
+
+  // const customValue={
+  //   Hospital_Name:"Apollo",
+  //   Image:"https://picsum.photos/200/300",
+  //   H_No:23
+  // }
+  // const customValues=[customValue,customValue,customValue,customValue,customValue,customValue,customValue,customValue,customValue]
+
   return (
-    <div className="carousel overflow-x-auto shadow-inner shadow-white rounded-3xl">
-      <div className="flex gap-x-0 carousel-item">
+    <div className={`flex overflow-x-auto no-scrollbar w-full h-96 py-10`}>
+      {/* <div className="flex gap-x-0 carousel-item border-8 border-black"> */}
         {
           // mapping the Object by converting into an array of objects
           Object.values(fetchedHospitals).map((value,index)=>{
             return (
-              <section className="rounded-box ml-4" key={index}>
+              <section className={`rounded-box ml-4 mx-4 ${styles.slideTrack}`} key={index}>
                 {/* calling the Card object with props */}
-                <Card Hospital_Name={value.Hospital_Name.substring(0, 10) + '...'} imgLink={value.Image} id={index} H_No={value.H_No} />
+                <Card Hospital_Name={value.Hospital_Name.substring(0, 30) + '...'} imgLink={value.Image} id={index} H_No={value.H_No} />
             </section>
             )
           })
         }
-      </div>
+      {/* </div> */}
     </div>
   );
 }

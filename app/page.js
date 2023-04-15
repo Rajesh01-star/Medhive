@@ -34,9 +34,9 @@ export default function Home() {
     <main>
       <Section>
       {/* first section */}
-        <div id="first-section" className="w-full flex justify-center px-20 h-screen">
-          <Details />
-        <div className=" w-1/2 flex items-center">
+        <div id="first-section" className="w-full flex justify-center h-[85vh]">
+          {/* <div>Text something</div> */}
+        <div className="w-full flex items-center">
           <Carousel />
         </div>
         </div>
