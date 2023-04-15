@@ -33,18 +33,18 @@ export default function SearchBar() {
 
   return (
     <div className="ml-20 w-full">
-      <div class="flex items-center">
-        <label for="simple-search" class="sr-only">
+      <div className="flex items-center">
+        <label htmlFor="simple-search" className="sr-only">
           Searched
         </label>
-        < div class="relative w-full">
-          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+        < div className="relative w-full">
+          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <SearchSvgComponent />
           </div>
           <input
             type="text"
             id="simple-search"
-            class="bg-cyan-200 text-white text-sm rounded-lg  block w-3/4 pl-10 p-2.5 hover:w-full transition-all ease-linear active:border-none"
+            className="bg-cyan-200 text-white text-sm rounded-lg  block w-3/4 pl-10 p-2.5 hover:w-full transition-all ease-linear active:border-none"
             placeholder="Search"
             required
             onChange={handleChange}
