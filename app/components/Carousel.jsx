@@ -37,7 +37,7 @@ export default function Carousel(){
   // to get the desired values destructuring
   const fetchedHospitals = Object.values(values.data)
   // {1:{Hospital_Name:....}}
-  console.log(fetchedHospitals);
+  // console.log(fetchedHospitals);
 
   return (
     <div className="carousel overflow-x-auto shadow-inner shadow-white rounded-3xl">
