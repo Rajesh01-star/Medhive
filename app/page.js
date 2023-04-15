@@ -1,7 +1,6 @@
 "use client";
 // components
 import Details from "./components/Details";
-import SearchBar from "./components/SearchBar";
 // icons
 import Carousel from "./components/Carousel";
 import NewsCarousel from "./components/NewsCarousel";
@@ -35,7 +34,7 @@ export default function Home() {
     <main>
       <Section>
       {/* first section */}
-        <div className="w-full flex justify-center px-20 h-screen">
+        <div id="first-section" className="w-full flex justify-center px-20 h-screen">
           <Details />
         <div className=" w-1/2 flex items-center">
           <Carousel />

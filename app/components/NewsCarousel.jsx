@@ -40,7 +40,7 @@ export default function NewsCarousel() {
   // fetchNews.map((news)=>console.log(news))
 
   return (
-    <section className="carousel rounded-box w-3/4 h-3/4 overflow-y-hidden">
+    <section id="newsCarousel" className="carousel rounded-box w-3/4 h-3/4 overflow-y-hidden">
       {fetchNews.map((news, index) => {
         return (
           <section

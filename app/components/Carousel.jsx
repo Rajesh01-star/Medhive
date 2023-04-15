@@ -37,6 +37,7 @@ export default function Carousel(){
   // to get the desired values destructuring
   const fetchedHospitals = Object.values(values.data)
   // {1:{Hospital_Name:....}}
+  // console.log(fetchedHospitals);
 
   return (
     <div className="carousel overflow-x-auto shadow-inner shadow-white rounded-3xl">
@@ -47,7 +48,7 @@ export default function Carousel(){
             return (
               <section className="rounded-box ml-4" key={index}>
                 {/* calling the Card object with props */}
-                <Card Hospital_Name={value.Hospital_Name.substring(0, 10) + '...'} imgLink={value.Image} id={index} />
+                <Card Hospital_Name={value.Hospital_Name.substring(0, 10) + '...'} imgLink={value.Image} id={index} H_No={value.H_No} />
             </section>
             )
           })
