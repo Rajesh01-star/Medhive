@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from "react";
 import { searchHospitalUrl } from "@/app/utils/url";
+import { LoadingAnimation,ErrorAnimation } from "@/app/components/LoadingAnimations";
 
 export default function hosPage() {
     
@@ -30,17 +31,11 @@ export default function hosPage() {
     }, []);
 
     if (error) {
-        return <div className="card h-[20rem]">
-            <iframe src="https://embed.lottiefiles.com/animation/98642" className="pointer-events-none"></iframe>
-            <span className="text-center">Error: {error.message}</span>
-            </div>;
+        return <ErrorAnimation errorMessage={error.message} />;
     }
 
     if (!values) {
-        return <div className="card h-[20rem]">
-            <iframe src="https://embed.lottiefiles.com/animation/9844" className="pointer-events-none"></iframe>
-            <span className="text-center">Loading...</span>
-        </div>;
+        return <LoadingAnimation />;
     }
 
     // console.log(values[0].H_No);

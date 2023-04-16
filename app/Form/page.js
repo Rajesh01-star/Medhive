@@ -2,21 +2,45 @@
 import submitHandler from "../utils/postFetch";
 import { use, useEffect, useState } from "react";
 
+import { ErrorAnimation,LoadingAnimation } from "../components/LoadingAnimations";
+
 
 
 export default function Form({searchParams}) {
 const hospitalName = searchParams.hospital_name;
 const h_No = searchParams.H_No;
+let todayDate = new Date().toJSON().slice(0, 10);
+
+const [roomCost,setRoomCost] = useState(6100)
 
 const [formData, setFormData] = useState({
   hospitalName: hospitalName,
   hospitalId: h_No,
-  patientName: "",
-  roomType:"",
-  roomId:"",
-  data:"",
-  paymentMode:"",
+  roomId:"R1",
+  // roomId:roomId
 });
+
+const handleRoomChange = (e)=>{
+  switch (e.target.value){
+    case "General" : {
+      setRoomCost(values[0].Room_Cost)
+      formData.roomId= values[0].Room_ID;
+    }
+    break;
+    // case "General" : console.log(values[0].Room_Cost);
+    case "Semi-Private" :{
+      setRoomCost(values[1].Room_Cost)
+      formData.roomId = values[1].Room_ID;
+    }
+    break;
+    case "Private" :{
+      setRoomCost(values[2].Room_Cost)
+      formData.roomId = values[2].Room_ID;
+    }
+    break;
+  }
+  handleChange(e);
+}
 
 const handleChange = (e) => {
   const { name, value } = e.target;
@@ -50,11 +74,11 @@ const [values, setValues] = useState(null);
   }, []);
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <ErrorAnimation errorMessage={error.message} />;
   }
 
   if (!values) {
-    return <div>Loading...</div>;
+    return <LoadingAnimation />;
   }
 
   // console.log(values);
@@ -79,11 +103,11 @@ const [values, setValues] = useState(null);
 
 
   return (
-    <section className="flex justify-center items-center w-screen h-screen ">
+    <section className="flex justify-center items-center w-screen h-screen  ">
       {/* onSubmit function needs to be called to post the formData */}
       <form method="POST" className="w-full max-w-sm h-80" onSubmit={submitForm}>
       {/* <form method="POST" className="w-full max-w-sm h-80" > */}
-        <div className="flex flex-wrap -mx-3 mb-4 border-8 border-black h-full p-4">
+        <div className="flex flex-wrap -mx-3 mb-4 h-full p-4">
           {/* hospital name */}
           <div className="w-full">
             <input
@@ -93,44 +117,33 @@ const [values, setValues] = useState(null);
               value={hospitalName}
               readOnly
               onChange={handleChange}
-              className="appearance-none border rounded-xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
+              className="appearance-none border rounded-xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2 "
             />
           </div>
           {/* Patient Name */}
-          <div className="w-full md:w-1/2 px-3">
+          <div className="w-full">
             <input
               type="text"
               id="patName"
               name="patName"
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none border rounded-xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2 "
               placeholder="Patient name"
               onChange={handleChange}
             />
           </div>
-          {/* Speciality choosen */}
-          <div className="w-full md:w-1/2 px-3">
-            <input
-              type="text"
-              id="speChoosen"
-              name="speChoosen"
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Speciality"
-              onChange={handleChange}
-            />
-          </div>
           {/* Date */}
-          <div className="w-full md:w-1/2 px-3">
+          <div className="w-full">
             <input
               type="date"
               id="date"
               name="date"
-              placeholder="date"
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              min={todayDate}
+              className="appearance-none border rounded-xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2 "
               onChange={handleChange}
             />
           </div>
           {/* Radio 1 Payement */}
-          <div className="w-full md:w-1/2 px-3">
+          <div className="w-full">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Mode of Payment
             </label>
@@ -138,7 +151,8 @@ const [values, setValues] = useState(null);
               <input
                 type="radio"
                 id="Cash"
-                name="Cash"
+                name="MOP"
+                value="Cash"
                 className="form-radio h-4 w-4 text-blue-500 focus:outline-none focus:shadow-outline"
                 onChange={handleChange}
               />
@@ -148,7 +162,8 @@ const [values, setValues] = useState(null);
               <input
                 type="radio"
                 id="Card"
-                name="Card"
+                name="MOP"
+                value="Card"
                 className="form-radio h-4 w-4 text-blue-500 focus:outline-none focus:shadow-outline"
                 onChange={handleChange}
               />
@@ -158,7 +173,8 @@ const [values, setValues] = useState(null);
               <input
                 type="radio"
                 id="UPI"
-                name="Cash"
+                name="MOP"
+                value="UPI"
                 className="form-radio h-4 w-4 text-blue-500 focus:outline-none focus:shadow-outline"
                 onChange={handleChange}
               />
@@ -168,30 +184,28 @@ const [values, setValues] = useState(null);
             </div>
           </div>
 
-          <div className="w-full md:w-1/2 px-3">
-          <p>{values[0].Room_Type}</p>
-          <p>{values[0].Available_rooms}</p>
-          <p>{values[0].Room_Cost}</p>
-          </div>
-          <div className="w-full md:w-1/2 px-3">
-          <p>{values[1].Room_Type}</p>
-          <p>{values[1].Available_rooms}</p>
-          <p>{values[1].Room_Cost}</p>
-          </div>
-          <div className="w-full md:w-1/2 px-3">
-          <p>{values[2].Room_Type}</p>
-          <p>{values[2].Available_rooms}</p>
-          <p>{values[2].Room_Cost}</p>
-          </div>
+          <div className="w-full">
+          <>
+          <label htmlFor="roomType" className="mr-2">Choose a room:</label>
+          <select className="focus:outline-none" id="roomType" name="roomType" onChange={handleRoomChange}>
+          <option value={values[0].Room_Type}>{values[0].Room_Type}</option>
+          <option value={values[1].Room_Type}>{values[1].Room_Type}</option>
+          <option value={values[2].Room_Type}>{values[2].Room_Type}</option>
+          </select>
+          </>
+          <>
+          <label htmlFor="roomCost" className="mx-2">Cost:</label>
+          <span>{roomCost}</span>
+          </>
 
+          </div>
         </div>
 
         <div className="flex justify-center">
           <button
             type="submit"
             // onClick={handleFormSubmit}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
             Book now
           </button>
         </div>
