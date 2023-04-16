@@ -6,33 +6,66 @@ import styles from "../styles/SearchBar.module.css"
 //the custom modules import
 import { SearchSvgComponent } from "./SvgComponent";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function SearchBar() {
+  let suggestionValues;
+  const [suggestPromptArray, setSuggestPropmptArray] = useState([])
+  // const suggestPromptArray = [];
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const [values, setValues] = useState(null);
-  const [search, setSearch] = useState([]);
+  const [search, setSearch] = useState({
+    searchString:0
+  });
 
-  const handleChange = async (event) => {
-    const { value } = event.target;
-    if (value.length >= 3) { // Only fetch if search query has 3 or more characters
-      try {
-        const data = await suggestionFetch(value);
-        setSearch(data);
-      } catch (error) {
-        console.error(error);
+
+  // fetching the suggestions
+  async function getRestData(keyword){
+    const res = await fetch(`http://localhost:8000/suggestions?keyword=${keyword}`)
+    const result = await res.json()
+    return result;
+  }
+
+  const handleChange = async (e) => {
+    const { name, value } = e.target;
+    setSearch((prevData) => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (search.searchString.length === 0) {
+        setShowSuggestions(false);
+      } else {
+        setShowSuggestions(true);
+        const suggestionValues = await getRestData(search.searchString);
+        const filteredSuggestions = [];
+        let counter = 0;
+        suggestionValues.forEach((suggestionValue) => {
+          if (suggestionValue.Source === 'Hospital' && counter < 3) {
+            filteredSuggestions.push(suggestionValue);
+            counter++;
+          }
+          if (suggestionValue.Source === 'Specilaty' && counter < 6) {
+            filteredSuggestions.push(suggestionValue);
+            counter++;
+          }
+        });
+        setSuggestPropmptArray(filteredSuggestions);
       }
-    } else {
-      setSearch([]); // Reset search results if search query has less than 3 characters
-    }
-  }
+    };
 
-  const suggestionFetch = async (value) => {
-    return await (await fetch(`http://localhost:8000/suggestions?keyword=${value}`)).json();
-  }
+    fetchData();
+  }, [search.searchString]);
 
+  // console.log(`needed array: ${suggestPromptArray}`);
+// console.log(suggestPromptArray);
 
 
   return (
-    <div className="ml-20 w-full">
+    <div className={`ml-20 w-full`}>
       <div className="flex items-center">
         <label htmlFor="simple-search" className="sr-only">
           Searched
@@ -48,16 +81,18 @@ export default function SearchBar() {
             placeholder="Search"
             required
             onChange={handleChange}
+            name="searchString"
           />
-         {search?.length > 0 &&
-          <div className={styles.autocomplete}>
-            {search?.map((ele, i) =>
-              <div key={i} className={styles.autocompleteItems}>
-                <span>{ele.name}</span>
-              </div>
-            )}
+          <div className={`${showSuggestions ? 'block' : 'hidden'}`}>
+          {suggestPromptArray.map((eachPromptElement, index) => {
+            let linkToGo
+            eachPromptElement.Source == "Hospital"? linkToGo = eachPromptElement.Hospital_Id : linkToGo = eachPromptElement.Specialty_Id
+            return (
+              <Link href={`/pages/${linkToGo}`} key={index} className="border-8 border-black">{eachPromptElement.Source == "Hospital" ? eachPromptElement.Hospital_Name: eachPromptElement.Specialty}</Link>
+            )
+          })}
           </div>
-        }
+          
         </div>
       </div>
     </div>

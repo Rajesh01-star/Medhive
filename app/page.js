@@ -6,7 +6,7 @@ import Carousel from "./components/Carousel";
 import NewsCarousel from "./components/NewsCarousel";
 
 import { useRef } from "react";
-import { useInView } from "framer-motion";
+import {motion,useScroll, useSpring, useInView } from "framer-motion";
 
 
 
@@ -30,8 +30,16 @@ function Section({ children }) {
 }
 
 export default function Home() {
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
   return (
     <main>
+      <motion.div className="progress-bar" style={{ scaleX }} />
       <Section>
       {/* first section */}
         <div id="first-section" className="w-full flex justify-center h-[85vh]">

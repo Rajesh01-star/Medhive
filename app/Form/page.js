@@ -28,7 +28,7 @@ const handleRoomChange = (e)=>{
     }
     break;
     // case "General" : console.log(values[0].Room_Cost);
-    case "Semi-Priavte" :{
+    case "Semi-Private" :{
       setRoomCost(values[1].Room_Cost)
       formData.roomId = values[1].Room_ID;
     }

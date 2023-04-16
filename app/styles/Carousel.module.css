@@ -9,6 +9,3 @@
         transform: translateX(calc(-250px*10));
     }
 }
-.slideTrack:hover {
-    animation: scroll 80s ease-in-out infinite; /* Update the duration and timing function to slow down the animation */
-}
