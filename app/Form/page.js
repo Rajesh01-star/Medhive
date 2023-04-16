@@ -49,7 +49,7 @@ const handleChange = (e) => {
     [name]: value
   }));
 };
-// console.log(formData);
+console.log(formData);
 
 // fetching the rest details to show in the form
 async function getRestData(){
