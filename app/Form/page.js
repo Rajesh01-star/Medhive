@@ -68,7 +68,7 @@ const [values, setValues] = useState(null);
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify("formData")
+    body: JSON.stringify(formData)
   })
   const result = await res.json()
   return result;
