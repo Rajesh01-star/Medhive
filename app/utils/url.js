@@ -7,7 +7,6 @@ const newsApiUrl = `https://newsapi.org/v2/top-headlines?country=in&source=bbc=n
 const searchHospitalUrl = 'http://localhost:8000/Hospitaldetails?'
 
 
-
 export {
   postformUrl,
   carouselFetchUrl,
