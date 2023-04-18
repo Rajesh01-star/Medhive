@@ -79,16 +79,20 @@ export default function SearchBar() {
             onChange={handleChange}
             name="searchString"
           />
+          </div>
           <div className={`${showSuggestions ? 'block' : 'hidden'}`}>
+            <ul className="relative left-100">
           {suggestPromptArray.map((eachPromptElement, index) => {
             let linkToGo
             eachPromptElement.Source == "Hospital"? linkToGo = eachPromptElement.Hospital_Id : linkToGo = eachPromptElement.Specialty_Id
             return (
-              <Link href={`/pages/${linkToGo}`} key={index} className="border-8 border-black">{eachPromptElement.Source == "Hospital" ? eachPromptElement.Hospital_Name: eachPromptElement.Specialty}</Link>
+              <li className="p-3 list-none bg-white w-full px-12 last:rounded-b-3xl hover:bg-zinc-100 text-black"><Link href={`/pages/${linkToGo}`} key={index} className=" overflow-hidden">{eachPromptElement.Source == "Hospital" ? eachPromptElement.Hospital_Name: eachPromptElement.Specialty}</Link></li>
             )
           })}
+          </ul>
           </div>
-        </div>
+          
+        
       </div>
     </div>
   );
