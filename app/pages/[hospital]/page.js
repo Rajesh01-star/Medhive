@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from "react";
-import { searchHospitalUrl } from "@/app/utils/url";
-import { LoadingAnimation,ErrorAnimation } from "@/app/components/LoadingAnimations";
+import { searchHospitalUrl } from "../../support/url";
+import { LoadingAnimation,ErrorAnimation } from "../../components/LoadingAnimations";
 
 export default function hosPage() {
     

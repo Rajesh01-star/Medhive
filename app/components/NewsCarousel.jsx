@@ -2,10 +2,12 @@
 // React-Next modules import
 import { use, useEffect, useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 //the custom modules import
-import { newsApiUrl } from "../utils/url";
+import { newsApiUrl } from "../support/url";
 import NewsCard from "./NewsCard";
+import TypingText from "./TypingText";
 
 async function newsFetch() {
   return await (await fetch(newsApiUrl)).json();
@@ -40,7 +42,9 @@ export default function NewsCarousel() {
   // fetchNews.map((news)=>console.log(news))
 
   return (
-    <section id="newsCarousel" className="carousel rounded-box w-3/4 h-3/4 overflow-y-hidden">
+    <section className="mt-[10rem] h-full w-full flex flex-col justify-center items-center">
+      <TypingText message="| News section" />
+    <div id="newsCarousel" className="flex overflow-x-scroll no-scrollbar rounded-box w-3/4 h-[30rem] overflow-y-hidden">
       {fetchNews.map((news, index) => {
         return (
           <section
@@ -57,6 +61,7 @@ export default function NewsCarousel() {
           </section>
         );
       })}
+    </div>
     </section>
   );
 }

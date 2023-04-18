@@ -1,19 +1,15 @@
 // React-Next modules import
 import { useState, useEffect } from "react";
-
-import styles from "../styles/SearchBar.module.css"
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 //the custom modules import
 import { SearchSvgComponent } from "./SvgComponent";
-import { motion } from "framer-motion";
-import Link from "next/link";
 
 export default function SearchBar() {
   let suggestionValues;
   const [suggestPromptArray, setSuggestPropmptArray] = useState([])
-  // const suggestPromptArray = [];
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [values, setValues] = useState(null);
   const [search, setSearch] = useState({
     searchString:0
   });
@@ -92,7 +88,6 @@ export default function SearchBar() {
             )
           })}
           </div>
-          
         </div>
       </div>
     </div>

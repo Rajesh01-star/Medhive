@@ -2,7 +2,7 @@
 // React-Next modules import
 import { use, useEffect, useState } from "react";
 //the custom modules import 
-import { carouselFetchUrl } from "../utils/url";
+import { carouselFetchUrl } from "../support/url";
 import Card from "./Card";
 import styles from "../styles/Carousel.module.css"
 import { ErrorAnimation,LoadingAnimation } from "./LoadingAnimations";

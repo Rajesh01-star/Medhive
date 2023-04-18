@@ -1,5 +1,5 @@
 "use client";
-import submitHandler from "../utils/postFetch";
+import submitHandler from "../support/postFetch";
 import { use, useEffect, useState } from "react";
 
 import { ErrorAnimation,LoadingAnimation } from "../components/LoadingAnimations";
@@ -49,7 +49,7 @@ const handleChange = (e) => {
     [name]: value
   }));
 };
-console.log(formData);
+// console.log(formData);
 
 // fetching the rest details to show in the form
 async function getRestData(){
