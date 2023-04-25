@@ -40,7 +40,7 @@ export default function Carousel(){
   // console.log(fetchedHospitals);
 
   return (
-    <div className="carousel overflow-x-auto shadow-inner shadow-white rounded-3xl">
+    <div className="carousel overflow-x-auto shadow-inner shadow-white rounded-3xl sticky items-start">
       <div className="flex gap-x-0 carousel-item">
         {
           // mapping the Object by converting into an array of objects

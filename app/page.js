@@ -7,6 +7,7 @@ import NewsCarousel from "./components/NewsCarousel";
 
 import { useRef } from "react";
 import { useInView } from "framer-motion";
+import Modules from './components/Modules'
 
 
 
@@ -31,22 +32,29 @@ function Section({ children }) {
 
 export default function Home() {
   return (
-    <main>
-      <Section>
-      {/* first section */}
+    <main className="snap-y snap-mandatory overflow-scroll">
+
+      <Section className='snap-start  '>
+        {/* first section */}
         <div id="first-section" className="w-full flex justify-center px-20 h-screen">
           <Details />
-        <div className=" w-1/2 flex items-center">
-          <Carousel />
-        </div>
+          <div className=" w-1/2 flex items-center">
+            <Carousel />
+          </div>
         </div>
       </Section>
-      <Section>
-         {/* second section */}
-      <div id="second-section" className="flex justify-center w-full h-screen items-center ">
+
+      <Section className='snap-center'>
+        {/* second section */}
+        <div id="second-section" className="flex justify-center w-full h-screen items-center ">
           <NewsCarousel />
-      </div>
+        </div>
       </Section>
+
+      <Section className="grid">
+        <Modules />
+      </Section>
+
     </main>
   );
 }

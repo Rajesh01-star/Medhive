@@ -1,6 +1,16 @@
+/* .main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+} */
+
+
 .autocomplete {
     width: 100%;
-    background: #fff;
+    background: black;
     border-radius: 5px;
     box-shadow: 0 2px 6px rgb(0,0,0,0.3);
   }
@@ -9,6 +19,6 @@
     border-bottom: 1px solid black;
     padding: 10px 5px;
     cursor: pointer;
-    color: dodgerblue;
+    color: black;
     font-weight: bold;
   }
