@@ -42,7 +42,7 @@ export default function Home() {
       <motion.div className="progress-bar" style={{ scaleX }} />
       <Section>
       {/* first section */}
-        <div id="first-section" className="w-full flex justify-center h-[85vh]">
+        <div id="first-section" className="w-full flex justify-center h-[85vh] border-8 border-black sm:bg-black">
           {/* <div>Text something</div> */}
         <div className="w-full flex items-center">
           <Carousel />

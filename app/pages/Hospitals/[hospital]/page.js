@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from "react";
-import { searchHospitalUrl } from "../../support/url";
-import { LoadingAnimation,ErrorAnimation } from "../../components/LoadingAnimations";
+import { searchHospitalUrl } from "../../../support/url";
+import { LoadingAnimation,ErrorAnimation } from "../../../components/LoadingAnimations";
 
 export default function hosPage() {
     
@@ -12,7 +12,7 @@ export default function hosPage() {
     const [error, setError] = useState(null);
 
     // Get the Id from the URL using usePathname hook
-    const Id = usePathname().slice(7); // Assuming the Id is after "/pages/"
+    const Id = usePathname().slice(17); // Assuming the Id is after "/pages/"
 
     async function searchHospitalFetch() {
         return await (await fetch(`${searchHospitalUrl}ID=${Id}`)).json();
@@ -38,7 +38,7 @@ export default function hosPage() {
         return <LoadingAnimation />;
     }
 
-    // console.log(values[0].H_No);
+    console.log(values);
 
     // custom data without fetching
     // const customValue = [{Hospital_Name:"Apollo",Place:"Bhubaneswar",Total_Beds:14,Total_Doctors:40,Total_Specialties:10,Stars:3}]
@@ -47,7 +47,7 @@ export default function hosPage() {
         <section className="flex justify-center items-center w-full h-screen">
             <div className="card cardd-compact bg-white/40 w-1/3 shadow-xl backdrop-blur-xl rounded-2xl">
                 <div className="flex justify-center w-full" >
-                    <Image width={100} height={100} src={"https://picsum.photos/200"} alt="image" className="w-full h-48" />
+                    <Image width={300} height={300} src={"https://picsum.photos/200"} alt="image" className="w-full h-56 rounded-t-xl" />
                 </div>
                 <div className="card-body">
                     <h2 className="card-title">Hospital</h2>

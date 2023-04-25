@@ -61,8 +61,8 @@ export default function SearchBar() {
 
 
   return (
-    <div className={`ml-20 w-full`}>
-      <div className="flex items-center">
+    <div className={`ml-20 w-1/2 pl-8  absolute top-[30%]`}>
+      <div className="flex flex-col top-0">
         <label htmlFor="simple-search" className="sr-only">
           Searched
         </label>
@@ -80,17 +80,17 @@ export default function SearchBar() {
             name="searchString"
           />
           </div>
-          <div className={`${showSuggestions ? 'block' : 'hidden'}`}>
-            <ul className="relative left-100">
+          <motion.div className={`${showSuggestions ? 'block' : 'hidden'}`}>
+            <motion.ul initial={{opacity:0}} animate={{opacity:1,transition:{duration:2}}} className="relative left-100">
           {suggestPromptArray.map((eachPromptElement, index) => {
             let linkToGo
-            eachPromptElement.Source == "Hospital"? linkToGo = eachPromptElement.Hospital_Id : linkToGo = eachPromptElement.Specialty_Id
+            eachPromptElement.Source == "Hospital"? linkToGo = `/pages/Hospitals/${eachPromptElement.Hospital_Id}` : linkToGo = `/pages/Diseases/${eachPromptElement.Specialty_Id}`
             return (
-              <li className="p-3 list-none bg-white w-full px-12 last:rounded-b-3xl hover:bg-zinc-100 text-black"><Link href={`/pages/${linkToGo}`} key={index} className=" overflow-hidden">{eachPromptElement.Source == "Hospital" ? eachPromptElement.Hospital_Name: eachPromptElement.Specialty}</Link></li>
+              <li className="p-3 list-none bg-white w-full px-12 last:rounded-b-3xl hover:bg-zinc-100 text-black"><Link href={linkToGo} key={index} className=" overflow-hidden">{eachPromptElement.Source == "Hospital" ? eachPromptElement.Hospital_Name: eachPromptElement.Specialty}</Link></li>
             )
           })}
-          </ul>
-          </div>
+          </motion.ul>
+          </motion.div>
           
         
       </div>

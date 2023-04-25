@@ -37,6 +37,7 @@ export default function Carousel(){
   }
 
   // to get the desired values destructuring
+  console.log(values);
   const fetchedHospitals = Object.values(values.data)
   // {1:{Hospital_Name:....}}
   // console.log(fetchedHospitals);
