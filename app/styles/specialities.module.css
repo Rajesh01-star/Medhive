@@ -1,0 +1,22 @@
+
+.card {
+	display: block;
+	width: 20rem;
+	background-color: #fff;
+	border-radius: 1.75rem;
+	padding: .75rem;
+	padding: 1rem;
+	box-shadow: 
+		0 16px 24px -12px 
+		rgba(black,0.15);
+}
+.card img {
+    text-align: center;
+    border-radius: 1.25rem;
+    contain: contents;
+    fit: fill-box;
+    margin-bottom: 1rem;
+    box-shadow: 
+        0 16px 24px -12px 
+        rgba(black,0.15);
+}

@@ -8,7 +8,7 @@ import styles from "../styles/Footer.module.css"
 
 export default function Footer() {
     return (
-        <div className=' h-[24rem] overflow-hidden backdrop-blur-md'  >
+        <div className='h-[24rem] overflow-hidden backdrop-blur-md'  >
             <div className={styles.overlay}></div>
            <video className={styles.video} src='https://assets.codepen.io/3364143/7btrrd.mp4' autoPlay loop muted />
            <footer className="text-white body-font">

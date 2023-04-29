@@ -30,12 +30,12 @@ const handleScroll = () => {
       animate={{ y: 0 }}
       className="sticky top-0 z-10"
     >
-      <section className="w-full h-24 backdrop-blur-md bg-white/50 flex justify-between items-center p-4 px-10 text-xl">
+      <section className="w-full h-24 backdrop-blur-2xl bg-[#c376ff]/40 flex justify-between items-center p-4 px-10 text-xl">
         <div className="flex w-1/2 items-center">
           <Link href={"/"}>
             <Image src="/logo.svg" width={100} height={100} alt="logo" />
           </Link>
-          <SearchBar />
+          {/* <SearchBar /> */}
         </div>
         <div className="w-[30rem]">
           <ul className="flex justify-around">

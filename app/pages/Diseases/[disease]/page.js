@@ -5,67 +5,82 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from "react";
 import { searchHospitalUrl } from "../../../support/url";
 import { LoadingAnimation,ErrorAnimation } from "../../../components/LoadingAnimations";
+import { FaBed } from "react-icons/fa";
+import {RiMapPin2Fill} from "react-icons/ri"
+import {GiLifeBar} from "react-icons/gi"
+import {MdCleanHands} from "react-icons/md"
+import {AiFillStar} from "react-icons/ai"
+
+
+import specialities from "./specialities";
+import styles from "../../../styles/specialities.module.css"
 
 export default function hosPage() {
     
-    const [values, setValues] = useState(null);
-    const [error, setError] = useState(null);
+    // const [values, setValues] = useState(null);
+    // const [error, setError] = useState(null);
 
-    // Get the Id from the URL using usePathname hook
-    const Id = usePathname().slice(16); // Assuming the Id is after "/pages/"
-    console.log(Id);
+    // // Get the Id from the URL using usePathname hook
+    // const Id = usePathname().slice(16); // Assuming the Id is after "/pages/"
+    // console.log(Id);
 
-    async function searchHospitalFetch() {
-        return await (await fetch(`${searchHospitalUrl}ID=${Id}`)).json();
-    }
+    // async function searchHospitalFetch() {
+    //     return await (await fetch(`${searchHospitalUrl}ID=${Id}`)).json();
+    // }
 
-    useEffect(() => {
-        async function fetchSearchHospitalFunc() {
-            try {
-                const data = await searchHospitalFetch();
-                setValues(data);
-            } catch (error) {
-                setError(error);
-            }
-        }
-        fetchSearchHospitalFunc();
-    }, []);
+    // useEffect(() => {
+    //     async function fetchSearchHospitalFunc() {
+    //         try {
+    //             const data = await searchHospitalFetch();
+    //             setValues(data);
+    //         } catch (error) {
+    //             setError(error);
+    //         }
+    //     }
+    //     fetchSearchHospitalFunc();
+    // }, []);
 
-    if (error) {
-        return <ErrorAnimation errorMessage={error.message} />;
-    }
+    // if (error) {
+    //     return <ErrorAnimation errorMessage={error.message} />;
+    // }
 
-    if (!values) {
-        return <LoadingAnimation />;
-    }
+    // if (!values) {
+    //     return <LoadingAnimation />;
+    // }
 
-    console.log(values);
-
-    // custom data without fetching
-    // const customValue = [{Hospital_Name:"Apollo",Place:"Bhubaneswar",Total_Beds:14,Total_Doctors:40,Total_Specialties:10,Stars:3}]
-    // customValue will be values when api is fetching
     return (
-        // <section className="flex justify-center items-center w-full h-screen">
-        //     <div className="card cardd-compact bg-white/40 w-1/3 shadow-xl backdrop-blur-xl rounded-2xl">
-        //         <div className="flex justify-center w-full" >
-        //             <Image width={300} height={300} src={"https://picsum.photos/200"} alt="image" className="w-full h-56 rounded-t-xl" />
-        //         </div>
-        //         <div className="card-body">
-        //             <h2 className="card-title">Hospital</h2>
-        //             <div className="flex flex-col">
-        //                 <p>Hospital Name: {values[0].Hospital_Name}</p>
-        //                 <p>Place: {values[0].Place}</p>
-        //                 <p>Bed count: {values[0].Total_Beds}</p>
-        //                 <p>Total doctors: {values[0].Total_Doctors}</p>
-        //                 <p>Speciality: {values[0].Total_Specialties}</p>
-        //                 <p>Stars: {values[0].Stars}</p>
-        //             </div>
-        //             <div className="card-actions justify-end">
-        //                 <Link href={{ pathname: '/Form', query: { hospital_name: values[0].Hospital_Name,H_No:values[0].H_No } }} className="btn btn-primary">Book now</Link>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </section>
-        <div>Disease section</div>
+        <div className="flex justify-center">
+            <section className="grid grid-cols-3 gap-10 p-10" >
+            {specialities.map((eachSpeciality) => {
+            const stars = Array.from({ length: parseInt(eachSpeciality.Stars) }, (_, i) => (
+                    <AiFillStar key={i} className="inline-block" />
+            ));
+
+            const specialityBadge = eachSpeciality.Specialties_Present.split(',').slice(0, 10);
+            const badges = specialityBadge.map((badge, j) => (
+                <div className="badge badge-accent mx-1" key={j}>
+                    {badge}
+                </div>
+            ));
+                return (
+                    <article className={styles.card}>
+	            <Image height={300} width={500} src={"https://picsum.photos/400"} className="h-[10rem]" />
+	            <h2 className="mb-5 text-center">{eachSpeciality.Hospital_Name.substring(0, 30) + '...'}</h2>
+                <p >Total Beds  <FaBed className="inline-block mx-2" /> : {eachSpeciality.Total_Beds} </p>
+                <p >Mortality Rate  <GiLifeBar className="inline-block mx-2" /> : {eachSpeciality.MortalityRate} </p>
+                <p >Cleanliness Score  <MdCleanHands className="inline-block mx-2" /> : {eachSpeciality.CleanlinessScore} </p>
+                <p>State <RiMapPin2Fill className="inline-block mx-2" />: {eachSpeciality.Place}</p>
+                {stars}
+                <div className="divider"></div> 
+                {badges}
+                <Link href={{ pathname: '/Form', query: { hospital_name: eachSpeciality.Hospital_Name,H_No:eachSpeciality.H_No } }}>
+                <input type="submit" value="Book now" className="btn bg-[#2dd4bf] border-none block ml-auto mt-4" />
+                </Link>
+                </article>
+                )
+                })}
+        </section>
+        </div>
+        // <div>Disease section</div>
     )
 }
