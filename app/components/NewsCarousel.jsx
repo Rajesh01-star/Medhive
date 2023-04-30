@@ -6,10 +6,8 @@ import { motion } from "framer-motion";
 
 //the custom modules import
 import { newsApiUrl } from "../support/url";
-import NewsCard from "./NewsCard";
-import TypingText from "./TypingText";
 
-import styles from "../styles/NewsCard.module.css"
+import styles from "../styles/NewsCarousel.module.css"
 
 async function newsFetch() {
   return await (await fetch(newsApiUrl)).json();
@@ -52,7 +50,7 @@ export default function NewsCarousel() {
     src={fetchNews[counter].urlToImage}
     className={`rounded-2xl h-full w-full object-cover transition-transform duration-500 ${styles.img}`}
   />
-  <div className={`flex justify-center items-center absolute bg-[#252525b7] w-full h-full top-0 left-0 opacity-0 hover:opacity-90 transition-opacity duration-300 p-10`}>
+  <div className={`flex justify-center items-center absolute bg-[#41056695] w-full h-full top-0 left-0 opacity-0 hover:opacity-90 transition-opacity duration-300 p-10`}>
     <h3 className="text-white text-lg">{fetchNews[counter].title}</h3>
   </div>
 </Link>
@@ -63,47 +61,24 @@ export default function NewsCarousel() {
 
 
   return (
-    // <section id="newsCarousel" className="carousel rounded-box w-3/4 h-3/4 overflow-y-hidden">
-    //   {fetchNews.map((news, index) => {
-    //     return (
-    //       <section
-    //         className="carousel-item w-full rounded-box ml-4"
-    //         key={index}
-    //       >
-    //         <NewsCard
-    //           author={news.author}
-    //           title={news.title}
-    //           content={news.content}
-    //           url={news.url}
-    //           imgLink={news.urlToImage}
-    //         />
-    //       </section>
-    //     );
-    //   })}
-    // </section>
-    <section className="w-[80%] h-[100vh] grid grid-cols-3 grid-rows-6 gap-4 p-10 mb-[10rem]">
+    <section id="news-carousel" className="w-[80%] h-[100vh] grid grid-cols-3 grid-rows-6 gap-4 p-10 my-[20rem]">
     <div className="bg-white rounded-2xl row-span-4 overflow-hidden">
       {imgLinkUpdater()}
     </div>
     <div className=" bg-white rounded-2xl row-span-2 col-span-2 overflow-hidden">
-      {/* <img src={fetchNews[1].urlToImage} className="rounded-2xl h-full w-full object-cover hover:scale-110 transition-transform duration-500" /> */}
       {imgLinkUpdater()}
     </div>
     <div className=" bg-white rounded-2xl row-span-2 col-span-1 overflow-hidden">
-      {/* <img src={fetchNews[2].urlToImage} className="rounded-2xl h-full w-full object-cover hover:scale-110 transition-transform duration-500" /> */}
       {imgLinkUpdater()}
     </div>
     <div className=" bg-white rounded-2xl row-span-2 col-span-1 overflow-hidden">
-      {/* <img src={fetchNews[3].urlToImage} className="rounded-2xl h-full w-full object-cover hover:scale-110 transition-transform duration-500" /> */}
       {imgLinkUpdater()}
     </div>
     <div className=" bg-white rounded-2xl row-span-2 overflow-hidden">
-    {/* <img src={fetchNews[4].urlToImage} className="rounded-2xl h-full w-full object-cover hover:scale-110 transition-transform duration-500" /> */}
     {imgLinkUpdater()}
 
     </div>
     <div className=" bg-white rounded-2xl row-span-2 col-span-2 overflow-hidden">
-    {/* <img src={fetchNews[5].urlToImage} className="rounded-2xl h-full w-full object-cover hover:scale-110 transition-transform duration-500" /> */}
     {imgLinkUpdater()}
 
     </div>

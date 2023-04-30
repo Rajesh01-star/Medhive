@@ -49,7 +49,7 @@ export default function hosPage() {
     // }
 
     return (
-        <div className="flex justify-center">
+        <div className="flex justify-center bg-[#fbf5ff]">
             <section className="grid grid-cols-3 gap-10 p-10" >
             {specialities.map((eachSpeciality) => {
             const stars = Array.from({ length: parseInt(eachSpeciality.Stars) }, (_, i) => (
@@ -58,12 +58,12 @@ export default function hosPage() {
 
             const specialityBadge = eachSpeciality.Specialties_Present.split(',').slice(0, 10);
             const badges = specialityBadge.map((badge, j) => (
-                <div className="badge badge-accent mx-1" key={j}>
+                <div className="badge bg-[#b351fb] text-white border-none mx-1" key={j}>
                     {badge}
                 </div>
             ));
                 return (
-                    <article className={styles.card}>
+                    <article className={`${styles.card} backdrop:blur-2xl bg-gradient-to-t from-[#ecd4ff] t0-[#f4e7ff]`}>
 	            <Image height={300} width={500} src={"https://picsum.photos/400"} className="h-[10rem]" />
 	            <h2 className="mb-5 text-center">{eachSpeciality.Hospital_Name.substring(0, 30) + '...'}</h2>
                 <p >Total Beds  <FaBed className="inline-block mx-2" /> : {eachSpeciality.Total_Beds} </p>
@@ -74,7 +74,7 @@ export default function hosPage() {
                 <div className="divider"></div> 
                 {badges}
                 <Link href={{ pathname: '/Form', query: { hospital_name: eachSpeciality.Hospital_Name,H_No:eachSpeciality.H_No } }}>
-                <input type="submit" value="Book now" className="btn bg-[#2dd4bf] border-none block ml-auto mt-4" />
+                <input type="submit" value="Book now" className="btn bg-[#b351fb] border-none block ml-auto mt-4" />
                 </Link>
                 </article>
                 )

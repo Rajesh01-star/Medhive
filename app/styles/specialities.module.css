@@ -1,8 +1,8 @@
-
 .card {
 	display: block;
 	width: 20rem;
-	background-color: #fff;
+	background-color: rgb(255, 255, 255);
+	backdrop-filter: blur(110px);
 	border-radius: 1.75rem;
 	padding: .75rem;
 	padding: 1rem;
