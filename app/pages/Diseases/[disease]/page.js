@@ -51,7 +51,7 @@ export default function hosPage() {
     return (
         <div className="flex justify-center bg-[#fbf5ff]">
             <section className="grid grid-cols-3 gap-10 p-10" >
-            {specialities.map((eachSpeciality) => {
+            {specialities.map((eachSpeciality,index) => {
             const stars = Array.from({ length: parseInt(eachSpeciality.Stars) }, (_, i) => (
                     <AiFillStar key={i} className="inline-block" />
             ));
@@ -63,7 +63,7 @@ export default function hosPage() {
                 </div>
             ));
                 return (
-                    <article className={`${styles.card} backdrop:blur-2xl bg-gradient-to-t from-[#ecd4ff] t0-[#f4e7ff]`}>
+                    <article className={`${styles.card} backdrop:blur-2xl bg-gradient-to-t from-[#ecd4ff] t0-[#f4e7ff]`} key={index}>
 	            <Image height={300} width={500} src={"https://picsum.photos/400"} className="h-[10rem]" />
 	            <h2 className="mb-5 text-center">{eachSpeciality.Hospital_Name.substring(0, 30) + '...'}</h2>
                 <p >Total Beds  <FaBed className="inline-block mx-2" /> : {eachSpeciality.Total_Beds} </p>
