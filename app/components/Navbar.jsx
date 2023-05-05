@@ -35,7 +35,7 @@ const handleScroll = () => {
           <Link href={"/"}>
             <Image src="/logo.svg" width={100} height={100} alt="logo" />
           </Link>
-          {/* <SearchBar /> */}
+          <SearchBar />
         </div>
         <div className="w-[30rem]">
           <ul className="flex justify-around">

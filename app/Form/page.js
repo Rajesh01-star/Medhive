@@ -17,6 +17,11 @@ const [formData, setFormData] = useState({
   hospitalName: hospitalName,
   hospitalId: h_No,
   roomId:"R1",
+  patName:"kekda",
+  date:"5/5/2023",
+  MOP:"Cash",
+  roomType:"General",
+
   // roomId:roomId
 });
 
@@ -92,14 +97,17 @@ const [values, setValues] = useState(null);
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify("formData")
+    body: JSON.stringify(formData)
   })
   const result = await res.json()
+  // if there is result then this alert will show other wise null
+  alert(result.message)
   return result;
   // We don't want the page to refresh
   // console.log("am here");
   // const res = await fetch("http://localhost:8000/fetch-data")
 }
+
 
 
   return (

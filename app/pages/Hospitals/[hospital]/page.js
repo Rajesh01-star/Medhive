@@ -40,6 +40,7 @@ export default function hosPage() {
 
     console.log(values);
 
+
     // custom data without fetching
     // const customValue = [{Hospital_Name:"Apollo",Place:"Bhubaneswar",Total_Beds:14,Total_Doctors:40,Total_Specialties:10,Stars:3}]
     // customValue will be values when api is fetching
@@ -65,5 +66,6 @@ export default function hosPage() {
                 </div>
             </div>
         </section>
+        // <div>hospital section</div>
     )
 }
