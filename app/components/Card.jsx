@@ -11,7 +11,7 @@ export default function Card(props){
       <Image src= {props.imgLink} alt="image" className="w-full h-[16rem] rounded-xl hover:scale-110 transition-all ease-in-out object-fill overflow-x-hidden " width={400} height={400}   />
     </Link>
   <div className="flex justify-center text-base mt-4">
-    <p>{props.Hospital_Name}</p>
+    <p className="text-black">{props.Hospital_Name}</p>
   </div>
   </div>
 </div>

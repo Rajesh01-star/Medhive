@@ -1,4 +1,5 @@
 import "./globals.css";
+import { ContextProvider } from "./Context/Context";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -11,9 +12,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="bg-[#fbf5ff]">
-        <Navbar />
-        {children}
-        <Footer />
+        <ContextProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </ContextProvider>
       </body>
     </html>
   );

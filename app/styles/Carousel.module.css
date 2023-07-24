@@ -1,11 +1,11 @@
-.slideTrack{
-    animation: scroll 40s linear infinite;
+.slideTrack {
+  animation: scroll 15s linear infinite;
 }
-
-@keyframes scroll{
-    0%{
-        transform: translateX(0);
-    }100%{
-        transform: translateX(calc(-250px*10));
-    }
+@keyframes scroll {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(calc(-150px * 10));
+  }
 }

@@ -30,38 +30,38 @@ export default function SearchBar() {
     }));
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (search.searchString.length === 0) {
-        setShowSuggestions(false);
-      } else {
-        setShowSuggestions(true);
-        const suggestionValues = await getRestData(search.searchString);
-        const filteredSuggestions = [];
-        let counter = 0;
-        suggestionValues.forEach((suggestionValue) => {
-          if (suggestionValue.Source === 'Hospital' && counter < 3) {
-            filteredSuggestions.push(suggestionValue);
-            counter++;
-          }
-          if (suggestionValue.Source === 'Specilaty' && counter < 6) {
-            filteredSuggestions.push(suggestionValue);
-            counter++;
-          }
-        });
-        setSuggestPropmptArray(filteredSuggestions);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     if (search.searchString.length === 0) {
+  //       setShowSuggestions(false);
+  //     } else {
+  //       setShowSuggestions(true);
+  //       const suggestionValues = await getRestData(search.searchString);
+  //       const filteredSuggestions = [];
+  //       let counter = 0;
+  //       suggestionValues.forEach((suggestionValue) => {
+  //         if (suggestionValue.Source === 'Hospital' && counter < 3) {
+  //           filteredSuggestions.push(suggestionValue);
+  //           counter++;
+  //         }
+  //         if (suggestionValue.Source === 'Specilaty' && counter < 6) {
+  //           filteredSuggestions.push(suggestionValue);
+  //           counter++;
+  //         }
+  //       });
+  //       setSuggestPropmptArray(filteredSuggestions);
+  //     }
+  //   };
 
-    fetchData();
-  }, [search.searchString]);
+  //   fetchData();
+  // }, [search.searchString]);
 
   // console.log(`needed array: ${suggestPromptArray}`);
 // console.log(suggestPromptArray);
 
 
   return (
-    <div className={`ml-20 w-1/2 pl-8  absolute top-[30%]`}>
+    <div className="w-full">
       <div className="flex flex-col top-0">
         <label htmlFor="simple-search" className="sr-only">
           Searched
@@ -73,7 +73,7 @@ export default function SearchBar() {
           <input
             type="text"
             id="simple-search"
-            className="bg-white/50 text-white text-sm rounded-lg  block w-3/4 pl-10 p-2.5 hover:w-full transition-all ease-linear focus:outline-none"
+            className="bg-white/50 w-full text-white text-sm rounded-lg  block pl-10 p-2 focus:outline-none"
             placeholder="Search"
             required
             onChange={handleChange}

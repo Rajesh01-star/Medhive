@@ -42,47 +42,50 @@ export default function NewsCarousel() {
   const fetchNews = values.articles;
   // fetchNews.map((news)=>console.log(news))
   function imgLinkUpdater() {
-  counter++;
+    counter++;
+
+    return (
+
+      <Link href={fetchNews[counter].url} className={`h-full w-full relative ${styles.linkContainer}`}>
+        <img
+          src={fetchNews[counter].urlToImage}
+          className={`rounded-2xl h-full w-full object-cover transition-transform duration-500 ${styles.img}`}
+        />
+        <div className={`flex justify-center items-center absolute bg-[#41056695] w-full h-full top-0 left-0 opacity-0 hover:opacity-90 transition-opacity duration-300 p-10`}>
+          <h3 className="text-white text-lg">{fetchNews[counter].title}</h3>
+        </div>
+      </Link>
+
+    );
+  }
+
+
 
   return (
-    <Link href={fetchNews[counter].url} className={`h-full w-full relative ${styles.linkContainer}`}>
-  <img
-    src={fetchNews[counter].urlToImage}
-    className={`rounded-2xl h-full w-full object-cover transition-transform duration-500 ${styles.img}`}
-  />
-  <div className={`flex justify-center items-center absolute bg-[#41056695] w-full h-full top-0 left-0 opacity-0 hover:opacity-90 transition-opacity duration-300 p-10`}>
-    <h3 className="text-white text-lg">{fetchNews[counter].title}</h3>
-  </div>
-</Link>
+    <section id="second-section" className="flex justify-center w-full h-screen items-center">
+    <div id="news-carousel" className="w-[80%] h-[100vh] grid grid-cols-3 grid-rows-6 gap-4 p-10 my-[20rem]">
+      <div className="bg-white rounded-2xl row-span-4 overflow-hidden">
+        {imgLinkUpdater()}
+      </div>
+      <div className=" bg-white rounded-2xl row-span-2 col-span-2 overflow-hidden">
+        {imgLinkUpdater()}
+      </div>
+      <div className=" bg-white rounded-2xl row-span-2 col-span-1 overflow-hidden">
+        {imgLinkUpdater()}
+      </div>
+      <div className=" bg-white rounded-2xl row-span-2 col-span-1 overflow-hidden">
+        {imgLinkUpdater()}
+      </div>
+      <div className=" bg-white rounded-2xl row-span-2 overflow-hidden">
+        {imgLinkUpdater()}
 
-  );
-}
+      </div>
+      <div className=" bg-white rounded-2xl row-span-2 col-span-2 overflow-hidden">
+        {imgLinkUpdater()}
 
-
-
-  return (
-    <section id="news-carousel" className="w-[80%] h-[100vh] grid grid-cols-3 grid-rows-6 gap-4 p-10 my-[20rem]">
-    <div className="bg-white rounded-2xl row-span-4 overflow-hidden">
-      {imgLinkUpdater()}
-    </div>
-    <div className=" bg-white rounded-2xl row-span-2 col-span-2 overflow-hidden">
-      {imgLinkUpdater()}
-    </div>
-    <div className=" bg-white rounded-2xl row-span-2 col-span-1 overflow-hidden">
-      {imgLinkUpdater()}
-    </div>
-    <div className=" bg-white rounded-2xl row-span-2 col-span-1 overflow-hidden">
-      {imgLinkUpdater()}
-    </div>
-    <div className=" bg-white rounded-2xl row-span-2 overflow-hidden">
-    {imgLinkUpdater()}
+      </div>
 
     </div>
-    <div className=" bg-white rounded-2xl row-span-2 col-span-2 overflow-hidden">
-    {imgLinkUpdater()}
-
-    </div>
-
     </section>
   );
 }
