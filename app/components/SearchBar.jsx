@@ -73,7 +73,7 @@ export default function SearchBar() {
           <input
             type="text"
             id="simple-search"
-            className="bg-white/50 w-full text-white text-sm rounded-lg  block pl-10 p-2 focus:outline-none"
+            className="bg-white/50 w-full text-black text-sm rounded-lg  block pl-10 p-2 focus:outline-none"
             placeholder="Search"
             required
             onChange={handleChange}

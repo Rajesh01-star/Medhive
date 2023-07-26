@@ -1,13 +1,9 @@
 "use client";
 // React-Next modules import
-import { use, useEffect, useState } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-
+import { useEffect, useState } from "react";
 //the custom modules import
 import { newsApiUrl } from "../support/url";
-
-import styles from "../styles/NewsCarousel.module.css"
+import NewsCard from "./NewsCard";
 
 async function newsFetch() {
   return await (await fetch(newsApiUrl)).json();
@@ -16,76 +12,55 @@ async function newsFetch() {
 // NewsCarousel to call NewsCard on each instance of the news
 export default function NewsCarousel() {
   let counter = -1;
-  const [values, setValues] = useState(null);
+  const [fetchedNews, setFetchedNews] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchNewsFunc() {
-      try {
-        const data = await newsFetch();
-        setValues(data);
-      } catch (error) {
-        setError(error);
-      }
-    }
     fetchNewsFunc();
   }, []);
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
+  async function fetchNewsFunc() {
+    try {
+      const data = await newsFetch();
+      setFetchedNews(data.articles);
+    } catch (error) {
+      setError(error);
+    }
   }
 
-  if (!values) {
-    return <div>Loading...</div>;
-  }
-
-  const fetchNews = values.articles;
-  // fetchNews.map((news)=>console.log(news))
-  function imgLinkUpdater() {
+  const NewsCardFunction = () => {
     counter++;
-
     return (
-
-      <Link href={fetchNews[counter].url} className={`h-full w-full relative ${styles.linkContainer}`}>
-        <img
-          src={fetchNews[counter].urlToImage}
-          className={`rounded-2xl h-full w-full object-cover transition-transform duration-500 ${styles.img}`}
-        />
-        <div className={`flex justify-center items-center absolute bg-[#41056695] w-full h-full top-0 left-0 opacity-0 hover:opacity-90 transition-opacity duration-300 p-10`}>
-          <h3 className="text-white text-lg">{fetchNews[counter].title}</h3>
-        </div>
-      </Link>
-
-    );
+      <NewsCard title={fetchedNews[counter].title} url={fetchedNews[counter].url} urlToImage={fetchedNews[counter].urlToImage} />
+    )
   }
-
-
 
   return (
     <section id="second-section" className="flex justify-center w-full h-screen items-center">
-    <div id="news-carousel" className="w-[80%] h-[100vh] grid grid-cols-3 grid-rows-6 gap-4 p-10 my-[20rem]">
-      <div className="bg-white rounded-2xl row-span-4 overflow-hidden">
-        {imgLinkUpdater()}
-      </div>
-      <div className=" bg-white rounded-2xl row-span-2 col-span-2 overflow-hidden">
-        {imgLinkUpdater()}
-      </div>
-      <div className=" bg-white rounded-2xl row-span-2 col-span-1 overflow-hidden">
-        {imgLinkUpdater()}
-      </div>
-      <div className=" bg-white rounded-2xl row-span-2 col-span-1 overflow-hidden">
-        {imgLinkUpdater()}
-      </div>
-      <div className=" bg-white rounded-2xl row-span-2 overflow-hidden">
-        {imgLinkUpdater()}
-
-      </div>
-      <div className=" bg-white rounded-2xl row-span-2 col-span-2 overflow-hidden">
-        {imgLinkUpdater()}
-
-      </div>
-
-    </div>
+      {fetchedNews ?
+        <div id="news-carousel" className="w-[80%] h-full grid grid-cols-3 grid-rows-6 gap-4 p-10 my-[20rem] sm:px-0 sm:py-10 sm:grid-cols-1">
+          <div className="bg-white rounded-2xl row-span-4 sm:row-auto sm:col-auto h-full w-full overflow-hidden">
+            {NewsCardFunction()}
+          </div>
+          <div className=" bg-white rounded-2xl row-span-2 col-span-2 sm:col-auto sm:row-auto overflow-hidden h-full w-full">
+            {NewsCardFunction()}
+          </div>
+          <div className=" bg-white rounded-2xl row-span-2 col-span-1 sm:col-auto sm:row-auto overflow-hidden h-full w-full">
+            {NewsCardFunction()}
+          </div>
+          <div className=" bg-white rounded-2xl row-span-2 col-span-1 sm:col-auto sm:row-auto overflow-hidden h-full w-full">
+            {NewsCardFunction()}
+          </div>
+          <div className=" bg-white rounded-2xl row-span-2 overflow-hidden sm:col-auto sm:row-auto h-full w-full">
+            {NewsCardFunction()}
+          </div>
+          <div className=" bg-white rounded-2xl row-span-2 col-span-2 sm:col-auto sm:row-auto overflow-hidden h-full w-full">
+            {NewsCardFunction()}
+          </div>
+        </div>
+      :
+      "Loading..."
+      }
     </section>
   );
 }

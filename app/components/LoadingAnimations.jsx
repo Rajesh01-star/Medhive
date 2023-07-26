@@ -9,7 +9,7 @@ function ErrorAnimation(props){
 
 function LoadingAnimation(){
     return(
-        <div className="card h-[20rem] w-full flex justify-center">
+        <div className="h-fit flex flex-col items-center">
         <iframe src="https://embed.lottiefiles.com/animation/9844" className="pointer-events-none"></iframe>
         <span className="text-center">Loading...</span>
     </div>
