@@ -11,12 +11,12 @@ export default function SearchBar() {
   const [suggestPromptArray, setSuggestPropmptArray] = useState([])
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [search, setSearch] = useState({
-    searchString:0
+    searchString: 0
   });
 
 
   // fetching the suggestions
-  async function getRestData(keyword){
+  async function getRestData(keyword) {
     const res = await fetch(`http://localhost:8000/suggestions?keyword=${keyword}`)
     const result = await res.json()
     return result;
@@ -57,7 +57,7 @@ export default function SearchBar() {
   // }, [search.searchString]);
 
   // console.log(`needed array: ${suggestPromptArray}`);
-// console.log(suggestPromptArray);
+  // console.log(suggestPromptArray);
 
 
   return (
@@ -79,20 +79,20 @@ export default function SearchBar() {
             onChange={handleChange}
             name="searchString"
           />
-          </div>
-          <motion.div className={`${showSuggestions ? 'block' : 'hidden'}`}>
-            <motion.ul initial={{opacity:0}} animate={{opacity:1,transition:{duration:2}}} className="relative left-100">
-          {suggestPromptArray.map((eachPromptElement, index) => {
-            let linkToGo
-            eachPromptElement.Source == "Hospital"? linkToGo = `/pages/Hospitals/${eachPromptElement.Hospital_Id}` : linkToGo = `/pages/Diseases/${eachPromptElement.Specialty_Id}`
-            return (
-              <li className="p-3 list-none bg-white w-full px-12 last:rounded-b-3xl hover:bg-zinc-100 text-black"><Link href={linkToGo} key={index} className=" overflow-hidden">{eachPromptElement.Source == "Hospital" ? eachPromptElement.Hospital_Name: eachPromptElement.Specialty}</Link></li>
-            )
-          })}
+        </div>
+        <motion.div className={`${showSuggestions ? 'block' : 'hidden'}`}>
+          <motion.ul initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 2 } }} className="relative left-100">
+            {suggestPromptArray.map((eachPromptElement, index) => {
+              let linkToGo
+              eachPromptElement.Source == "Hospital" ? linkToGo = `/pages/Hospitals/${eachPromptElement.Hospital_Id}` : linkToGo = `/pages/Diseases/${eachPromptElement.Specialty_Id}`
+              return (
+                <li className="p-3 list-none bg-white w-full px-12 last:rounded-b-3xl hover:bg-zinc-100 text-black"><Link href={linkToGo} key={index} className=" overflow-hidden">{eachPromptElement.Source == "Hospital" ? eachPromptElement.Hospital_Name : eachPromptElement.Specialty}</Link></li>
+              )
+            })}
           </motion.ul>
-          </motion.div>
-          
-        
+        </motion.div>
+
+
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaLocationArrow } from "react-icons/fa";
+import { fallBackImageUrl } from "../support/url";
 
 
 export default function NewsCard({ title, url, urlToImage }) {
@@ -11,7 +12,7 @@ export default function NewsCard({ title, url, urlToImage }) {
         <div className="h-full w-full relative overflow-hidden">
             <Link href={url} className="h-full w-full">
                 <img
-                    src={urlToImage}
+                    src={urlToImage || fallBackImageUrl}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                     className={`rounded-2xl h-full w-full object-cover transition-transform duration-500 ${isHovered ? "scale-110" : ""
