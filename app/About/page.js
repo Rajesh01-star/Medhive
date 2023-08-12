@@ -2,7 +2,6 @@
 import { AnimatePresence } from "framer-motion";
 import { useGlobalContext } from "../Context/Context";
 import MobileNav from "../components/MobileNav";
-import ParallaxText from "../components/ParallaxText";
 import {TbBrandNextjs} from "react-icons/tb";
 
 export default function About() {

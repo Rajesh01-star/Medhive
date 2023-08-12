@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaLocationArrow } from "react-icons/fa";
 import { fallBackImageUrl } from "../support/url";
 
 

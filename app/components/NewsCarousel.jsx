@@ -2,12 +2,8 @@
 // React-Next modules import
 import { useEffect, useState } from "react";
 //the custom modules import
-import { newsApiUrl } from "../support/url";
+import { NewsApi } from "../support/url";
 import NewsCard from "./NewsCard";
-
-async function newsFetch() {
-  return await (await fetch(newsApiUrl)).json();
-}
 
 // NewsCarousel to call NewsCard on each instance of the news
 export default function NewsCarousel() {
@@ -15,18 +11,19 @@ export default function NewsCarousel() {
   const [fetchedNews, setFetchedNews] = useState(null);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    fetchNewsFunc();
-  }, []);
-
   async function fetchNewsFunc() {
     try {
-      const data = await newsFetch();
+      const data = await NewsApi.fetchNews();
+      console.log(data);
       setFetchedNews(data.articles);
     } catch (error) {
       setError(error);
     }
   }
+
+  useEffect(() => {
+    fetchNewsFunc();
+  }, []);
 
   const NewsCardFunction = () => {
     counter++;
