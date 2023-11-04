@@ -30,6 +30,13 @@ export default function SearchBar() {
     }));
   };
 
+  const handleEnter = async(e)=>{
+    const key = e.key;
+    if(key === 'Enter'){
+      console.log(search);
+    }
+  }
+
   // useEffect(() => {
   //   const fetchData = async () => {
   //     if (search.searchString.length === 0) {
@@ -77,6 +84,7 @@ export default function SearchBar() {
             placeholder="Search"
             required
             onChange={handleChange}
+            onKeyDown={handleEnter}
             name="searchString"
           />
         </div>
