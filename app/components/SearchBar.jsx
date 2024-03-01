@@ -24,16 +24,30 @@ export default function SearchBar() {
 
   const handleChange = async (e) => {
     const { name, value } = e.target;
+
     setSearch((prevData) => ({
       ...prevData,
       [name]: value
     }));
   };
 
-  const handleEnter = async(e)=>{
+  const handleEnter = async (e) => {
     const key = e.key;
-    if(key === 'Enter'){
+    if (key === 'Enter') {
       console.log(search);
+    }
+    // const initials = "ABC";
+    suggestionHospitalsFetch(search.searchString);
+  }
+
+
+  const suggestionHospitalsFetch = async (initials) => {
+    const url = `http://localhost:4000/getSearchHospitals?initials=${initials}`;
+    try {
+      const response = await fetch(url);
+      console.log(response);
+    } catch (err) {
+      console.log(err);
     }
   }
 
